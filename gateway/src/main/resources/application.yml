@@ -1,0 +1,30 @@
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: foyer-service
+         uri: lb://FOYER-SERVICE
+         predicates:
+           - Path=/foyers/**
+       - id: universite-service
+         uri: lb://UNIVERSITE-SERVICE
+         predicates:
+           - Path=/universities/**
+       #- id: identity-service
+       #  uri: lb://IDENTITY-SERVICE
+        # predicates:
+        #   - Path=/auth/**
+
+ application:
+   name: ENIGMA-GATEWAY
+
+ #security:
+   #oauth2:
+     #resourceserver:
+       #jwt:
+         #issuer-uri: http://localhost:8180/realms/Enigma
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
