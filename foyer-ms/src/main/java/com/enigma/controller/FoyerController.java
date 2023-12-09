@@ -86,7 +86,6 @@ public class FoyerController {
     public ResponseEntity<ApiResponse> updateFoyer(@RequestBody Foyer foyer, @PathVariable long idFoyer) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            // Retrieve the existing foyer from the repository
             Foyer f = foyerRepo.findById(idFoyer).orElse(null);
 
             if (f == null) {
@@ -94,21 +93,17 @@ public class FoyerController {
                 return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
             }
 
-            // Update the properties of the existing foyer
             f.setNom(foyer.getNom());
             f.setCapacite(foyer.getCapacite());
             f.setLng(foyer.getLng());
             f.setLat(foyer.getLat());
 
-            // Check if the idUniversite in the request is not null
             Long idUniversite = foyer.getIdUniversite();
             if (idUniversite != null) {
-                // Fetch university information from the external service
                 String universiteUrl = "http://UNIVERSITE-SERVICE/universities/" + idUniversite;
                 ApiResponse apiResponseUni = template.getForObject(universiteUrl, ApiResponse.class);
                 HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("university");
 
-                // Create a Universite object from the fetched data
                 Universite universite = new Universite(
                         ((Integer) data.get("id")).longValue(),
                         (String) data.get("nom"),
@@ -116,12 +111,10 @@ public class FoyerController {
                         (String) data.get("image")
                 );
 
-                // Set the Universite for the Foyer
                 f.setUniversite(universite);
                 f.setIdUniversite(foyer.getIdUniversite());
             }
 
-            // Save the updated foyer
             Foyer updatedFoyer = foyerRepo.save(f);
 
             apiResponse.setResponse(org.springframework.http.HttpStatus.CREATED, "Foyer updated");
@@ -135,7 +128,7 @@ public class FoyerController {
 
 
     @DeleteMapping  ("/{idFoyer}")
-    public void affecterFoyer(@PathVariable long idFoyer) {
+    public void delete(@PathVariable long idFoyer) {
          foyerRepo.deleteById(idFoyer);
     }
 

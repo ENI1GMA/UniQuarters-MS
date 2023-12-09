@@ -16,7 +16,7 @@ public class Foyer {
     private long capacite;
     private double lng;
     private double lat;
-   
+
     private Long idUniversite;
 
     @Transient // not a column in the database, jpa will ignore it, it's just for data passing
