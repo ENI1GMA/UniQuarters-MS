@@ -7,10 +7,7 @@ import com.enigma.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -70,4 +67,70 @@ public class FoyerController {
         }
         return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
     }
+    @PostMapping("")
+    public ResponseEntity<ApiResponse>  addFoyer(@RequestBody Foyer foyer) {
+        ApiResponse apiResponse = new ApiResponse();
+        try {
+
+             apiResponse.setResponse(org.springframework.http.HttpStatus.CREATED, "Foyer added");
+
+            apiResponse.addData("foyer", foyerRepo.save(foyer));
+        } catch (Exception e) {
+            apiResponse.setResponse(org.springframework.http.HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+        return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
+
+
+    }
+    @PutMapping("/{idFoyer}")
+    public ResponseEntity<ApiResponse> updateFoyer(@RequestBody Foyer foyer, @PathVariable long idFoyer) {
+        ApiResponse apiResponse = new ApiResponse();
+        try {
+            Foyer f = foyerRepo.findById(idFoyer).orElse(null);
+
+            if (f == null) {
+                apiResponse.setResponse(org.springframework.http.HttpStatus.NOT_FOUND, "Foyer not found");
+                return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
+            }
+
+            f.setNom(foyer.getNom());
+            f.setCapacite(foyer.getCapacite());
+            f.setLng(foyer.getLng());
+            f.setLat(foyer.getLat());
+
+            Long idUniversite = foyer.getIdUniversite();
+            if (idUniversite != null) {
+                String universiteUrl = "http://UNIVERSITE-SERVICE/universities/" + idUniversite;
+                ApiResponse apiResponseUni = template.getForObject(universiteUrl, ApiResponse.class);
+                HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("university");
+
+                Universite universite = new Universite(
+                        ((Integer) data.get("id")).longValue(),
+                        (String) data.get("nom"),
+                        (String) data.get("adresse"),
+                        (String) data.get("image")
+                );
+
+                f.setUniversite(universite);
+                f.setIdUniversite(foyer.getIdUniversite());
+            }
+
+            Foyer updatedFoyer = foyerRepo.save(f);
+
+            apiResponse.setResponse(org.springframework.http.HttpStatus.CREATED, "Foyer updated");
+            apiResponse.addData("foyer", updatedFoyer);
+        } catch (Exception e) {
+            apiResponse.setResponse(org.springframework.http.HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+
+        return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
+    }
+
+
+    @DeleteMapping  ("/{idFoyer}")
+    public void delete(@PathVariable long idFoyer) {
+         foyerRepo.deleteById(idFoyer);
+    }
+
+
 }

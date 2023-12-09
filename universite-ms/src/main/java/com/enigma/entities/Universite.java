@@ -1,9 +1,7 @@
 package com.enigma.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,5 +15,7 @@ public class Universite {
     private String nom;
     private String adresse;
     private String image;
-    private long idFoyer;
+    //@Transient
+    //@JsonIgnore
+   // private long idFoyer;
 }
