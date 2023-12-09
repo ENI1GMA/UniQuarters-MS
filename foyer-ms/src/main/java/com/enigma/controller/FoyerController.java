@@ -7,10 +7,7 @@ import com.enigma.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -70,4 +67,43 @@ public class FoyerController {
         }
         return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
     }
+    @PostMapping("")
+    public Foyer addFoyer(@RequestBody Foyer foyer) {
+        return foyerRepo.save(foyer);
+    }
+    @PutMapping ("/{idFoyer}")
+    public Foyer updateFoyer(@RequestBody Foyer foyer,@PathVariable long idFoyer) {
+        Foyer f = foyerRepo.findById(idFoyer).orElse(null);
+        f.setNom(foyer.getNom());
+        f.setCapacite(foyer.getCapacite());
+        f.setLng(foyer.getLng());
+        f.setLat(foyer.getLat());
+
+        return foyerRepo.save(f);
+    }
+    @PutMapping ("/{idFoyer}/{idUniv}")
+    public Foyer affecterFoyer(@PathVariable long idFoyer,@PathVariable long idUniv) {
+        Foyer f = foyerRepo.findById(idFoyer).orElse(null);
+       f.setIdUniversite(idUniv);
+        String universiteUrl = "http://UNIVERSITE-SERVICE/universities/" + idUniv;
+
+        ApiResponse apiResponseUni = template.getForObject(universiteUrl, ApiResponse.class);
+        HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("university");
+
+        Universite universite = new Universite(
+                ((Integer) data.get("id")).longValue(),
+                (String) data.get("nom"),
+                (String) data.get("adresse"),
+                (String) data.get("image")
+        );
+       f.setUniversite(universite);
+
+        return foyerRepo.save(f);
+    }
+    @DeleteMapping  ("/{idFoyer}")
+    public void affecterFoyer(@PathVariable long idFoyer) {
+         foyerRepo.deleteById(idFoyer);
+    }
+
+
 }
