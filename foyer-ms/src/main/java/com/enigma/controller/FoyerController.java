@@ -78,14 +78,8 @@ public class FoyerController {
         f.setCapacite(foyer.getCapacite());
         f.setLng(foyer.getLng());
         f.setLat(foyer.getLat());
-
-        return foyerRepo.save(f);
-    }
-    @PutMapping ("/{idFoyer}/{idUniv}")
-    public Foyer affecterFoyer(@PathVariable long idFoyer,@PathVariable long idUniv) {
-        Foyer f = foyerRepo.findById(idFoyer).orElse(null);
-       f.setIdUniversite(idUniv);
-        String universiteUrl = "http://UNIVERSITE-SERVICE/universities/" + idUniv;
+        f.setIdUniversite(foyer.getIdUniversite());
+        String universiteUrl = "http://UNIVERSITE-SERVICE/universities/" + foyer.getIdUniversite();
 
         ApiResponse apiResponseUni = template.getForObject(universiteUrl, ApiResponse.class);
         HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("university");
@@ -96,10 +90,10 @@ public class FoyerController {
                 (String) data.get("adresse"),
                 (String) data.get("image")
         );
-       f.setUniversite(universite);
-
+        f.setUniversite(universite);
         return foyerRepo.save(f);
     }
+   
     @DeleteMapping  ("/{idFoyer}")
     public void affecterFoyer(@PathVariable long idFoyer) {
          foyerRepo.deleteById(idFoyer);
