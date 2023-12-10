@@ -63,4 +63,22 @@ module.exports = class ReservationController {
       res.status(500).json({ status: 'error', message: error.message });
     }
   }
+
+  static async getReservationByEtudiant(req, res) {
+    try {
+      const { id } = req.params;
+      if (!id) throw new Error('id is required');
+      const reservations = await ReservationService.getReservationByEtudiant(id);
+      if (!reservations) return res.status(404).json({ status: 'error', message: 'Reservation not found' });
+      res.status(200).json({
+        status: 'success',
+        message: 'Get reservation by etudiant',
+        data: {
+          reservations,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({ status: 'error', message: error.message });
+    }
+  }
 };
