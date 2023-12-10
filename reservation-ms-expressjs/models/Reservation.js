@@ -5,8 +5,6 @@ const EtudiantSchema = new Schema(
   {
     id: {
       type: String,
-      required: true,
-      unique: true,
     },
   },
   {
@@ -17,8 +15,6 @@ const ChambreSchema = new Schema(
   {
     id: {
       type: String,
-      required: true,
-      unique: true,
     },
   },
   {
@@ -26,30 +22,28 @@ const ChambreSchema = new Schema(
   }
 );
 
-const reservationSchema = new Schema(
-  {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    anneeUniversitaire: {
-      type: Number,
-      required: true,
-    },
-    estValide: {
-      type: Boolean,
-      required: true,
-    },
-    etudiant: {
-      type: EtudiantSchema,
-    },
-    chambre: {
-      type: ChambreSchema,
-      required: true,
-    },
-  }
-);
+const reservationSchema = new Schema({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  anneeUniversitaire: {
+    type: Number,
+    required: true,
+  },
+  estValide: {
+    type: Boolean,
+    required: true,
+  },
+  etudiant: {
+    type: EtudiantSchema,
+  },
+  chambre: {
+    type: ChambreSchema,
+    required: true,
+  },
+});
 
 const Reservation = mongoose.model('Reservation', reservationSchema);
 
