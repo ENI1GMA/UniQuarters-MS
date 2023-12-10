@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 require('./config/MongoDB')();
 const reservationRoutes = require('./routes/reservation');
+const eurekaClient = require('./config/eurekaClient');
+
 class Server {
   constructor() {
     this.app = express();
@@ -32,6 +34,7 @@ class Server {
 
   async start() {
     try {
+      eurekaClient.start();
       this.app.listen(process.env.PORT, () => {
         console.log(`Server is listening on port ${process.env.PORT}`);
       });
