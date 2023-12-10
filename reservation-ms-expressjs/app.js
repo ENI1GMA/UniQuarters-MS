@@ -5,8 +5,7 @@ dotenv.config();
 const morgan = require('morgan');
 const cors = require('cors');
 require('./config/MongoDB')();
-
-const ReservationModel = require('./models/Reservation');
+const reservationRoutes = require('./routes/reservation');
 class Server {
   constructor() {
     this.app = express();
@@ -25,8 +24,7 @@ class Server {
   }
 
   initializeRoutes() {
-    // this.app.use('/hotel', authentification, hotelRoutes);
-
+    this.app.use('/reservations', reservationRoutes);
     this.app.use((req, res) => {
       res.status(404).json({ status: 'error', message: 'Route Not found', api: 'content.boosterbc.com' });
     });
