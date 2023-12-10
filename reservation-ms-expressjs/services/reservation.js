@@ -75,6 +75,16 @@ module.exports = class ReservationService {
     }
   }
 
+  static async getReservation(id) {
+    try {
+      const reservation = await ReservationModel.findOne({ id });
+      return reservation;
+    } catch (error) {
+      console.log('🚀 ~ ReservationService ~ getReservation ~ error:', error);
+      throw error;
+    }
+  }
+
   static #generateId(idChambre, idEtudiant) {
     return idChambre + '_' + idEtudiant;
   }
