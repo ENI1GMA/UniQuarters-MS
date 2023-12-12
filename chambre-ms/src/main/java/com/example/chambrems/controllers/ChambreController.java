@@ -72,7 +72,7 @@ public class ChambreController {
                         foyerId(((Integer) data.get("foyerId")).longValue())
                         .build();
                 foundChambre.setBloc(bloc);
-                
+
                 apiResponse.setResponse(HttpStatus.OK, "Chambre retrieved successfully.");
                 apiResponse.addData("chambre", foundChambre);
             }
@@ -145,8 +145,15 @@ public class ChambreController {
 
 
     @DeleteMapping("/{idChambre}")
-    public void delete(@PathVariable long idChambre) {
-        chambreRepo.deleteById(idChambre);
+    ApiResponse deleteChambre(@PathVariable long idChambre) {
+        ApiResponse apiResponse = new ApiResponse();
+        try {
+            chambreRepo.deleteById(idChambre);
+            apiResponse.setResponse(HttpStatus.OK, "Chambre deleted successfully.");
+        } catch (Exception e) {
+            apiResponse.setResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return apiResponse;
     }
 
 
