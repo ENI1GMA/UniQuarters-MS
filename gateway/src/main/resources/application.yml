@@ -4,24 +4,28 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: foyer-service
-          uri: lb://FOYER-SERVICE
-          predicates:
-            - Path=/foyers/**
         - id: universite-service
           uri: lb://UNIVERSITE-SERVICE
           predicates:
             - Path=/universities/**
+        - id: foyer-service
+          uri: lb://FOYER-SERVICE
+          predicates:
+            - Path=/foyers/**
         - id: bloc-service
           uri: lb://BLOC-SERVICE
           predicates:
-            - Path=/service/**
+            - Path=/blocs/**
+        - id: reservation-service-expressjs
+          uri: lb://RESERVATION-SERVICE-EXPRESSJS
+          predicates:
+            - Path=/reservations/**
 #      discovery:
 #        locator:
 #          lower-case-service-id: true
 
   application:
-    name: ENIGMA-GATEWA
+    name: ENIGMA-GATEWAY
 
  #security:
    #oauth2:

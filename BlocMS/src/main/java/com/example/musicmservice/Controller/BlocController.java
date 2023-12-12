@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/service")
+@RequestMapping("/blocs")
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200/", allowedHeaders = "*")
 public class BlocController {

@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>BlocMS</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>MusicMService</name>
+    <name>BlocMS</name>
     <description>MusicMService</description>
     <properties>
         <java.version>1.8</java.version>
