@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/4TWIN3-ENGIMA-MS.iml" filepath="$PROJECT_DIR$/.idea/4TWIN3-ENGIMA-MS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BlocMS/BlocMS.iml" filepath="$PROJECT_DIR$/BlocMS/BlocMS.iml" />
     </modules>
   </component>
 </project>
