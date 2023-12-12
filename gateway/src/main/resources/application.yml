@@ -1,30 +1,46 @@
 server:
   port: 8081
 spring:
- cloud:
-   gateway:
-     routes:
-       - id: foyer-service
-         uri: lb://FOYER-SERVICE
-         predicates:
-           - Path=/foyers/**
-       - id: universite-service
-         uri: lb://UNIVERSITE-SERVICE
-         predicates:
-           - Path=/universities/**
-       #- id: identity-service
-       #  uri: lb://IDENTITY-SERVICE
-        # predicates:
-        #   - Path=/auth/**
+  cloud:
+    gateway:
+      routes:
+        - id: universite-service
+          uri: lb://UNIVERSITE-SERVICE
+          predicates:
+            - Path=/universities/**
+        - id: foyer-service
+          uri: lb://FOYER-SERVICE
+          predicates:
+            - Path=/foyers/**
+        - id: bloc-service
+          uri: lb://BLOC-SERVICE
+          predicates:
+            - Path=/blocs/**
+        - id: chambre-service
+          uri: lb://CHAMBRE-SERVICE
+          predicates:
+            - Path=/chambres/**
+        - id: reservation-service-expressjs
+          uri: lb://RESERVATION-SERVICE-EXPRESSJS
+          predicates:
+            - Path=/reservations/**
+        - id: reclamation-service
+          uri: lb://RECLAMATION-SERVICE
+          predicates:
+            - Path=/reclamations/**
+#      discovery:
+#        locator:
+#          lower-case-service-id: true
 
- application:
-   name: ENIGMA-GATEWAY
+  application:
+    name: ENIGMA-GATEWAY
 
  #security:
    #oauth2:
      #resourceserver:
        #jwt:
          #issuer-uri: http://localhost:8180/realms/Enigma
+
 
 eureka:
   client:
