@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="RunManager" selected="Spring Boot.BlocServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ChambreMsApplication">
     <configuration name="BlocServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="BlocMS" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.musicmservice.BlocServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChambreMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="chambre-ms" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.chambrems.ChambreMsApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

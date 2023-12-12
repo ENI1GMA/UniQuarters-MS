@@ -10,17 +10,16 @@
         <module name="BlocMS" />
         <module name="enigma-gateway" />
         <module name="foyer-service" />
+        <module name="chambre-ms" />
         <module name="eurekaDiscov" />
         <module name="universite-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="chambre-ms" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BlocMS" options="-parameters" />
+      <module name="chambre-ms" options="-parameters" />
       <module name="enigma-gateway" options="-parameters" />
       <module name="eurekaDiscov" options="-parameters" />
       <module name="foyer-service" options="-parameters" />
