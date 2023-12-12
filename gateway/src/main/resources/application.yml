@@ -16,6 +16,10 @@ spring:
           uri: lb://BLOC-SERVICE
           predicates:
             - Path=/blocs/**
+        - id: chambre-service
+          uri: lb://CHAMBRE-SERVICE
+          predicates:
+            - Path=/chambres/**
         - id: reservation-service-expressjs
           uri: lb://RESERVATION-SERVICE-EXPRESSJS
           predicates:
