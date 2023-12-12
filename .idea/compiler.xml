@@ -7,13 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="BlocMS" />
+        <module name="enigma-gateway" />
+        <module name="foyer-service" />
+        <module name="eurekaDiscov" />
+        <module name="universite-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="enigma-gateway" target="17" />
-      <module name="eurekaDiscov" target="21" />
-      <module name="foyer-service" target="17" />
-      <module name="universite-service" target="17" />
+      <module name="chambre-ms" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
