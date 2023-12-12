@@ -9,10 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="BlocMS" />
         <module name="enigma-gateway" />
-        <module name="foyer-service" />
         <module name="chambre-ms" />
         <module name="eurekaDiscov" />
         <module name="universite-service" />
+        <module name="foyer-service" />
+        <module name="reclamation-ms" />
       </profile>
     </annotationProcessing>
   </component>
@@ -23,6 +24,7 @@
       <module name="enigma-gateway" options="-parameters" />
       <module name="eurekaDiscov" options="-parameters" />
       <module name="foyer-service" options="-parameters" />
+      <module name="reclamation-ms" options="-parameters" />
       <module name="universite-service" options="-parameters" />
     </option>
   </component>
