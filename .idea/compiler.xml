@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="BlocMS" />
+        <module name="reclamation-service" />
         <module name="enigma-gateway" />
         <module name="chambre-ms" />
         <module name="eurekaDiscov" />
         <module name="universite-service" />
         <module name="foyer-service" />
-        <module name="reclamation-ms" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="reclamation-ms" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -25,6 +28,7 @@
       <module name="eurekaDiscov" options="-parameters" />
       <module name="foyer-service" options="-parameters" />
       <module name="reclamation-ms" options="-parameters" />
+      <module name="reclamation-service" options="-parameters" />
       <module name="universite-service" options="-parameters" />
     </option>
   </component>

@@ -24,6 +24,10 @@ spring:
           uri: lb://RESERVATION-SERVICE-EXPRESSJS
           predicates:
             - Path=/reservations/**
+        - id: reclamation-service
+          uri: lb://RECLAMATION-SERVICE
+          predicates:
+            - Path=/reclamations/**
 #      discovery:
 #        locator:
 #          lower-case-service-id: true
