@@ -1,6 +1,11 @@
 server:
   port: 8081
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloakauth:8080/realms/Enigma
   cloud:
     gateway:
       routes:
@@ -34,12 +39,6 @@ spring:
 
   application:
     name: ENIGMA-GATEWAY
-
- #security:
-   #oauth2:
-     #resourceserver:
-       #jwt:
-         #issuer-uri: http://localhost:8180/realms/Enigma
 
 
 eureka:
