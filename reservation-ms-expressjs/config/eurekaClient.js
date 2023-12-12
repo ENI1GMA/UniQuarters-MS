@@ -7,7 +7,7 @@ const eurekaConfig = {
     app: 'RESERVATION-SERVICE-EXPRESSJS', // Replace with your service name
     hostName: 'localhost',
     ipAddr: '127.0.0.1',
-    statusPageUrl: 'http://localhost:3000/info',
+    statusPageUrl: 'http://localhost:8086/info',
     port: {
       $: process.env.PORT,
       '@enabled': 'true',

@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reclamation-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/reclamation-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/controllers/ReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/controllers/ReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/controllers/ChambreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/controllers/ChambreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/config/eurekaClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/config/eurekaClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/services/chambre.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/services/chambre.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/khoui/projects/applications distribuées/projet/reclamation-ms",
+    "last_opened_file_path": "C:/Users/khoui/projects/applications distribuées/projet",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -132,6 +133,7 @@
       <updated>1702411970359</updated>
       <workItem from="1702411971461" duration="2122000" />
       <workItem from="1702416166838" duration="1080000" />
+      <workItem from="1702418380777" duration="1755000" />
     </task>
     <servers />
   </component>

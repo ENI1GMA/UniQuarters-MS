@@ -62,17 +62,18 @@ public class ChambreController {
             if (foundChambre == null) {
                 apiResponse.setResponse(HttpStatus.NOT_FOUND, "Chambre not found.");
             } else {
-                String blocUrl = "http://BLOC-SERVICE/blocs/" + foundChambre.getIdBloc();
-                ApiResponse apiResponseUni = template.getForObject(blocUrl, ApiResponse.class);
-                HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("bloc");
-                Bloc bloc = Bloc.builder()
-                        .id(((Integer) data.get("id")).longValue())
-                        .nom((String) data.get("nom"))
-                        .capacite((String) data.get("capacite")).
-                        foyerId(((Integer) data.get("foyerId")).longValue())
-                        .build();
-                foundChambre.setBloc(bloc);
-
+                if (foundChambre.getIdBloc() != null) {
+                    String blocUrl = "http://BLOC-SERVICE/blocs/" + foundChambre.getIdBloc();
+                    ApiResponse apiResponseUni = template.getForObject(blocUrl, ApiResponse.class);
+                    HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("bloc");
+                    Bloc bloc = Bloc.builder()
+                            .id(((Integer) data.get("id")).longValue())
+                            .nom((String) data.get("nom"))
+                            .capacite((String) data.get("capacite")).
+                            foyerId(((Integer) data.get("foyerId")).longValue())
+                            .build();
+                    foundChambre.setBloc(bloc);
+                }
                 apiResponse.setResponse(HttpStatus.OK, "Chambre retrieved successfully.");
                 apiResponse.addData("chambre", foundChambre);
             }

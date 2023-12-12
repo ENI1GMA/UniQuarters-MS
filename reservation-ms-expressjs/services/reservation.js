@@ -51,15 +51,15 @@ module.exports = class ReservationService {
         chambre = await ChambreService.getChambre(idChambre);
         console.log('🚀 ~ ReservationService ~ #checkChambreUserExistance ~ chambre:', chambre);
       } catch (error) {
-        console.log('error chambre', error.response.data);
-        throw new Error(`get chambre ${idChambre} failed, ${error.response?.data?.message}`);
+        console.log('error chambre', error?.response?.data || error);
+        throw new Error(`get chambre ${idChambre} failed, ${error.response?.data?.message || error.message}`);
       }
 
       try {
         user = await UserService.getUser(idEtudiant, bearerToken);
         console.log('🚀 ~ ReservationService ~ #checkChambreUserExistance ~ user:', user);
       } catch (error) {
-        console.log('error user', error.response.data);
+        console.log('error user', error?.response?.data || error);
         throw new Error(
           `get user ${idEtudiant} failed, ${error.response?.data?.message || error.response?.data?.error}`
         );
