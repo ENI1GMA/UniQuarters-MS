@@ -25,8 +25,8 @@ public class Bloc {
     private String color;
     private String capacite;
     private Long foyerId;
-
-
+    @Transient
+    private Foyer foyer;
     @Override
     public String toString() {
         return "Bloc{" +
