@@ -4,10 +4,15 @@
     <file url="file://$PROJECT_DIR$/BlocMS/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/BlocMS/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/chambre-ms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chambre-ms/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eurekaDiscov/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eurekaDiscov/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/foyer-ms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/foyer-ms/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/reclamation-ms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/universite-ms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/universite-ms/src/main/resources" charset="UTF-8" />
   </component>
 </project>

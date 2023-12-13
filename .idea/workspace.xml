@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="" />
+    <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chambre-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chambre-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaDiscov/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaDiscov/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reclamation-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/reclamation-ms/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +37,7 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2ZSON07eBlJqedxtwAXbTqGV7KP" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -44,17 +53,18 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gestionChambre&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/khoui/projects/applications distribuées/projet&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lajmi Yasmine/Downloads/Studies &amp; Homework/Projects/4TWIN3-ENGIMA-MS/BlocMS/src/main/java/com/example/musicmservice/BlocServiceApplication.java&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4322132&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -66,15 +76,25 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ChambreMsApplication">
-    <configuration name="BlocServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="BlocServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="BlocMS" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.musicmservice.BlocServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChambreMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="BlocServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="4TWIN3-ENGIMA-MS" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.musicservice.BlocServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChambreMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <module name="chambre-ms" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.chambrems.ChambreMsApplication" />
       <method v="2">
@@ -82,6 +102,8 @@
       </method>
     </configuration>
     <configuration name="EnigmaGatewayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="enigma-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.enigma.EnigmaGatewayApp" />
@@ -90,6 +112,8 @@
       </method>
     </configuration>
     <configuration name="EurekaDiscovApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="eurekaDiscov" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="esprit.tn.eurekadiscov.EurekaDiscovApplication" />
       <method v="2">
@@ -97,6 +121,8 @@
       </method>
     </configuration>
     <configuration name="FoyerService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="foyer-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.enigma.FoyerService" />
@@ -105,6 +131,8 @@
       </method>
     </configuration>
     <configuration name="ReclamationMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="reclamation-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="tn.enigma.reclamationms.ReclamationMsApplication" />
@@ -113,13 +141,24 @@
       </method>
     </configuration>
     <configuration name="UniversiteServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="universite-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.enigma.UniversiteServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.BlocServiceApplication (1)" />
+      <item itemvalue="Spring Boot.ChambreMsApplication" />
+      <item itemvalue="Spring Boot.BlocServiceApplication" />
+      <item itemvalue="Spring Boot.EnigmaGatewayApp" />
+      <item itemvalue="Spring Boot.EurekaDiscovApplication" />
+      <item itemvalue="Spring Boot.FoyerService" />
+      <item itemvalue="Spring Boot.ReclamationMsApplication" />
+      <item itemvalue="Spring Boot.UniversiteServiceApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -133,6 +172,10 @@
       <workItem from="1702416166838" duration="1080000" />
       <workItem from="1702418380777" duration="9435000" />
       <workItem from="1702466461137" duration="2458000" />
+      <workItem from="1702482973910" duration="1217000" />
+      <workItem from="1702484463878" duration="476000" />
+      <workItem from="1702484948683" duration="261000" />
+      <workItem from="1702486035984" duration="3360000" />
     </task>
     <servers />
   </component>
@@ -149,5 +192,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/UniQuarters-Angular" />
+    </ignored-roots>
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
