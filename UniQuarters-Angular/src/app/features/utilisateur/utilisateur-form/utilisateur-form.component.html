@@ -3,68 +3,26 @@
     <div class="grid">
       <div class="col-12">
         <label class="label required mt-2">username </label>
-        <input
-          id="username"
-          name="username"
-          required
-          #username="ngModel"
-          [(ngModel)]="userToSubmit.username"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-          type="text"
-          class="inputtext-sm full-width"
-          pInputText
-        />
-        <div
-          *ngIf="username.dirty && username.errors?.['required']"
-          class="invalid-feedback"
-        >
+        <input id="username" name="username" required #username="ngModel" [(ngModel)]="userToSubmit.username"
+          type="text" class="inputtext-sm full-width" pInputText />
+        <div *ngIf="username.dirty && username.errors?.['required']" class="invalid-feedback">
           Le username est obligatoire
-        </div>
-        <div
-          *ngIf="username.dirty && username.errors?.['pattern']"
-          class="invalid-feedback"
-        >
-          Le username n'est pas valide
-        </div>
-        <div *ngIf="mailExists" class="invalid-feedback">
-          Le username est déja utilisé
         </div>
       </div>
       <div class="col-12">
         <label class="label required mt-2">Mot de passe</label>
-        <input
-          [disabled]="id != undefined"
-          class="inputtext-sm full-width"
-          id="password"
-          required
-          minlength="8"
-          name="passowrd"
-          #password="ngModel"
-          [(ngModel)]="userToSubmit.password"
-          type="password"
-          pInputText
-        />
-        <div
-          *ngIf="password.dirty && password.errors?.['required']"
-          class="invalid-feedback"
-        >
+        <input [disabled]="id != undefined" class="inputtext-sm full-width" id="password" required minlength="8"
+          name="passowrd" #password="ngModel" [(ngModel)]="userToSubmit.password" type="password" pInputText />
+        <div *ngIf="password.dirty && password.errors?.['required']" class="invalid-feedback">
           Le mot de passe est obligatoire
         </div>
-        <div
-          *ngIf="password.dirty && password.errors?.['minlength']"
-          class="invalid-feedback"
-        >
+        <div *ngIf="password.dirty && password.errors?.['minlength']" class="invalid-feedback">
           Le mot de passe doit contenir au moins 8 caractéres
         </div>
       </div>
     </div>
     <div class="footer-popup mt-4">
-      <input
-        type="submit"
-        class="primary-button"
-        value="Confirmer"
-        [disabled]="f.invalid"
-      />
+      <input type="submit" class="primary-button" value="Confirmer" [disabled]="f.invalid" />
     </div>
   </form>
 </div>

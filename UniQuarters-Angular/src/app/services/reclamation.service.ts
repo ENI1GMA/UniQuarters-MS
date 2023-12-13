@@ -1,16 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { User } from '../models/user';
 import { Observable, Subject, catchError, retry, tap, throwError } from 'rxjs';
-import { Role } from '../models/role';
+import { environment } from 'src/environments/environment';
+import { Reclamation } from '../models/reclamation';
 
-const uniQuartersUri = environment.uniQuartersUri + "/user";
+const url = environment.uniQuartersUri + '/reclamations';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class ReclamationService {
+
   private _refresh$ = new Subject<void>();
 
   constructor(private http: HttpClient) { }
@@ -19,8 +19,8 @@ export class UserService {
     return this._refresh$;
   }
 
-  addUser(e: User): Observable<HttpResponse<any>> {
-    return this.http.post(uniQuartersUri, e, { observe: 'response' })
+  addReclamation(e: Reclamation): Observable<HttpResponse<any>> {
+    return this.http.post(url, e, { observe: 'response' })
       .pipe(
         retry(3), catchError(this.handleError),
         tap(() => {
@@ -28,8 +28,8 @@ export class UserService {
         }));
   }
 
-  updateUser(e: User): Observable<HttpResponse<any>> {
-    return this.http.put(uniQuartersUri, e, { observe: 'response' })
+  updateReclamation(e: Reclamation): Observable<HttpResponse<any>> {
+    return this.http.put(url, e, { observe: 'response' })
       .pipe(
         retry(3), catchError(this.handleError),
         tap(() => {
@@ -37,16 +37,16 @@ export class UserService {
         }));
   }
 
-  getUsers(): Observable<HttpResponse<any>> {
-    return this.http.get(uniQuartersUri, { observe: 'response' }).pipe(retry(3), catchError(this.handleError))
+  getReclamations(): Observable<HttpResponse<any>> {
+    return this.http.get(url, { observe: 'response' }).pipe(retry(3), catchError(this.handleError))
   }
 
-  getUser(id: string): Observable<HttpResponse<any>> {
-    return this.http.get(uniQuartersUri + "/" + id, { observe: 'response' }).pipe(retry(3), catchError(this.handleError))
+  getReclamation(id: number): Observable<HttpResponse<any>> {
+    return this.http.get(url + "/" + id, { observe: 'response' }).pipe(retry(3), catchError(this.handleError))
   }
 
-  deleteUser(id: string): Observable<HttpResponse<any>> {
-    return this.http.delete(uniQuartersUri + "/" + id, { observe: 'response' })
+  deleteReclamation(id: number): Observable<HttpResponse<any>> {
+    return this.http.delete(url + "/" + id, { observe: 'response' })
       .pipe(
         retry(3), catchError(this.handleError),
         tap(() => {
@@ -63,6 +63,5 @@ export class UserService {
         : `\nCode: ${error.status}\nMessage: ${error.message}`;
     return throwError(() => new Error(errorMessage));
   }
-
 
 }

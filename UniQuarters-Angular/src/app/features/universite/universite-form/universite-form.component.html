@@ -26,70 +26,13 @@
                 </div>
             </div>
 
-            <div class="col-12 justify-center">
-                <label  class="label required mt-2" for="logo">Logo:</label>
-                <div *ngIf="university">
-                    <img alt="Card"  src="../../../../assets/img/{{university.image}}" height="150px" width="300px" />
-                </div>
-                <input  class="inputtext-sm full-width"  [formControl]="fbLogo"  (change)="onUpload($event)" accept="image/*" type="file">
-                <!-- <p-fileUpload mode="basic" chooseLabel="Choose" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*"  (onUpload)="onUpload($event)"></p-fileUpload> -->
-                <div class="invalid-feedback" *ngIf="fbLogo!.invalid && (fbLogo!.touched)">
-                    <div *ngIf="fbLogo!.errors!['required']"> Logo is required !</div>
+          
 
-                </div>
-            </div>
-
-            <div formGroupName="foyer" class="col-12">
-                <div class="grid">
-                <div class="col-12">
-                    <label class="label required mt-2">Nom Foyer </label>
-                    <input id="otherProperty"  name="nom" formControlName="nom" type="text"
-                        class="inputtext-sm full-width" placeholder="Saisir le nom du foyer" pInputText />
-                        <!-- {{foyerNom.errors['required']}} -->
-                    <div class="invalid-feedback" *ngIf="foyerNom!.invalid && (foyerNom!.touched || foyerNom!.dirty)">
-                        
-                        <div *ngIf="foyerNom!.errors!['required']"> Name is required !</div>
-                        <div *ngIf="foyerNom!.errors!['minlength']"> Name must be at least 3 characters !</div>
-
-                    </div>
-                </div>
-               
-                <div class="col-12">
-                    <label class="label required mt-2">Capacite Foyer </label>
-                    <input id="otherProperty" required name="capacite" formControlName="capacite" type="number"
-                        class="inputtext-sm full-width" placeholder="Saisir la capacite du foyer" pInputText />
-                    <div class="invalid-feedback" *ngIf="capacite!.invalid && (capacite!.touched || capacite!.dirty)">
-                        <div *ngIf="capacite!.errors!['required']"> Capacity is required !</div>
-
-                    </div>
-                </div>
-            </div>
-                <div class="map-container" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)" >
-                </div>
-                <div class="grid">
-                <div class="col-6">
-                    <label  class="label required mt-2" for="latitude">Latitude:</label>
-                    <input  class="inputtext-sm full-width" type="text" name="lat" formControlName="lat" readonly pInputText>
-                    <div class="invalid-feedback" *ngIf="foyerLat!.invalid  &&  foyerLat!.dirty ">
-                        <div *ngIf="foyerLat!.errors!['required']"> Latitude is required !</div>
-                    </div>
-                </div>
-
-                <div class="col-6">
-                    <label  class="label required mt-2" for="longitude">Longitude:</label>
-                    <input  class="inputtext-sm full-width"type="text" name="lng" formControlName="lng" readonly pInputText>
-                    <div class="invalid-feedback" *ngIf="foyerLng!.invalid  &&  foyerLng!.dirty">
-                        <div *ngIf="foyerLng!.errors!['required']"> Longitude is required !</div>
-
-                    </div>
-                </div>
-            </div>
-
-            </div>
+           
         </div>
         <div class="footer-popup mt-4">
             <input type="submit" class="primary-button" [value]="id!==undefined? 'Update' : 'Add'"
-                [disabled]="fbUni.invalid || fbLogo!.invalid">
+                [disabled]="fbUni.invalid">
 
 
         </div>
