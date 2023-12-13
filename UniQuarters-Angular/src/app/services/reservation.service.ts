@@ -37,8 +37,7 @@ export class ReservationService {
           detail: `${response.data.reservations.length} réservations récupérées avec succès.`,
         });
         console.log('response:', response);
-        console.log('parsed', this.parseData(response));
-        this.data = this.parseData(response);
+        this.data = response.data.reservations;
         console.log('🚀 ~ reservations from service after parse:', this.data);
       },
       error: (error) => {

@@ -4,7 +4,19 @@ const ChambreService = require('./chambre.js');
 module.exports = class ReservationService {
   static async getAllReservations() {
     try {
-      const reservations = await ReservationModel.find();
+      const reservationResult = await ReservationModel.find();
+      const reservations = reservationResult.map(reservation => reservation.toObject());
+      console.log('🚀 ~ ReservationService ~ getAllReservations ~ reservations:', reservations);
+      for (const reservation of reservations) {
+        if (!reservation.chambre || !reservation.chambre.id) continue;
+        const chambre = await ChambreService.getChambre(reservation.chambre.id);
+        console.log('typeof reservation', typeof reservation);
+        console.log('chambre', chambre);
+        console.log('before reservation.chambre', reservation.chambre);
+        reservation.chambre = chambre;
+        console.log('after reservation.chambre', reservation.chambre);
+      }
+      console.log('🚀 ~ ReservationService ~ getAllReservations ~ reservations:', reservations);
       return reservations;
     } catch (error) {
       console.log('🚀 ~ ReservationService ~ getAllReservations ~ error:', error);
