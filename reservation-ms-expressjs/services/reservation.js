@@ -4,7 +4,19 @@ const ChambreService = require('./chambre.js');
 module.exports = class ReservationService {
   static async getAllReservations() {
     try {
-      const reservations = await ReservationModel.find();
+      const reservationResult = await ReservationModel.find();
+      const reservations = reservationResult.map(reservation => reservation.toObject());
+      console.log('🚀 ~ ReservationService ~ getAllReservations ~ reservations:', reservations);
+      for (const reservation of reservations) {
+        if (!reservation.chambre || !reservation.chambre.id) continue;
+        const chambre = await ChambreService.getChambre(reservation.chambre.id);
+        console.log('typeof reservation', typeof reservation);
+        console.log('chambre', chambre);
+        console.log('before reservation.chambre', reservation.chambre);
+        reservation.chambre = chambre;
+        console.log('after reservation.chambre', reservation.chambre);
+      }
+      console.log('🚀 ~ ReservationService ~ getAllReservations ~ reservations:', reservations);
       return reservations;
     } catch (error) {
       console.log('🚀 ~ ReservationService ~ getAllReservations ~ error:', error);
@@ -88,6 +100,16 @@ module.exports = class ReservationService {
         throw new Error(`Reservation ${idReservation} already validated`);
       }
 
+      if (!reservation.etudiant) {
+        console.log('Reservation does not have etudiant');
+        throw new Error(`Reservation ${idReservation} does not have etudiant`);
+      }
+
+      if (!reservation.chambre) {
+        console.log('Reservation does not have chambre');
+        throw new Error(`Reservation ${idReservation} does not have chambre`);
+      }
+
       // check if reservation.etudiant.id alreadt have a validated reservation
       const etudiantReservations = await ReservationModel.find({
         'etudiant.id': reservation.etudiant.id,
@@ -128,6 +150,72 @@ module.exports = class ReservationService {
       console.log('🚀 ~ ReservationService ~ validerReservation ~ error:', error);
       throw error;
     }
+  }
+
+  static async cancelReservation(reservationId) {
+    console.log('cancelReservation', reservationId);
+    // check if reservationId exist
+    const reservation = await ReservationModel.findOne({ id: reservationId });
+    console.log('reservation', reservation);
+    if (!reservation) {
+      console.log('Reservation not found');
+      throw new Error(`Reservation ${reservationId} not found`);
+    }
+    // check if reservation is already canceled
+    if (!reservation.estValide) {
+      console.log('Reservation already invalid');
+      throw new Error(`Reservation ${reservationId} already invalid`);
+    }
+
+    if (!reservation.etudiant) {
+      console.log('Reservation already invalid');
+      throw new Error(`Reservation does not have etudiant`);
+    }
+
+    if (!reservation.chambre) {
+      console.log('Reservation already invalid');
+      throw new Error(`Reservation does not have chambre`);
+    }
+    // desaffect chambre and etudiant
+    const result = await ReservationModel.findOneAndUpdate(
+      { id: reservationId },
+      {
+        $set: {
+          estValide: false,
+          etudiant: null,
+          chambre: null,
+        },
+      },
+      { new: true }
+    );
+    console.log('result', result);
+    return result;
+  }
+
+  static async getChambresReservationsStatistiques() {
+    // loops through all chambres from Service Chambre and for each chambre get freePlaces, maxPlaces, reservationsCount, reservationsIds and chambre object
+    const chambres = await ChambreService.getAllChambres();
+    console.log('chambres', chambres);
+    const chambresReservationsStatistiques = [];
+    for (const chambre of chambres) {
+      const maxPlaces = this.#getChambreMaxPlaces(chambre.type);
+      const reservationsChambreValid = await ReservationModel.find({
+        'chambre.id': chambre.id,
+        estValide: true,
+      });
+      const reservationsCount = reservationsChambreValid.length;
+      const reservationsIds = reservationsChambreValid.map(reservation => reservation.id);
+      const freePlaces = maxPlaces - reservationsCount;
+      chambresReservationsStatistiques.push({
+        chambre,
+        freePlaces,
+        maxPlaces,
+        reservationsCount,
+        reservationsIds,
+      });
+    }
+    console.log('chambresReservationsStatistiques', chambresReservationsStatistiques);
+    return chambresReservationsStatistiques;
   }
 
   static #generateId(idChambre, idEtudiant) {

@@ -37,8 +37,7 @@ export class ReservationService {
           detail: `${response.data.reservations.length} réservations récupérées avec succès.`,
         });
         console.log('response:', response);
-        console.log('parsed', this.parseData(response));
-        this.data = this.parseData(response);
+        this.data = response.data.reservations;
         console.log('🚀 ~ reservations from service after parse:', this.data);
       },
       error: (error) => {
@@ -61,8 +60,8 @@ export class ReservationService {
     return this._http.get(`${this.apiUrl}/${id}`);
   }
 
-  addReservation(idChambre: number, cinEtudiant: number) {
-    return this._http.post(`${this.apiUrl}/${idChambre}/${cinEtudiant}`, {});
+  addReservation(idChambre: number, idEtudiant: string) {
+    return this._http.post(`${this.apiUrl}/${idChambre}/${idEtudiant}`, {});
   }
 
   updateReservation(id: String) {
@@ -70,7 +69,7 @@ export class ReservationService {
   }
 
   validateReservation(id: String) {
-    return this._http.put(`${this.apiUrl}/valider/${id}`, {});
+    return this._http.patch(`${this.apiUrl}/valider/${id}`, {});
   }
 
   cancelReservation(cinEtudiant: number) {
@@ -78,7 +77,7 @@ export class ReservationService {
   }
 
   getEtudiants() {
-    return this._http.get(environment.baseUrl + '/etudiants');
+    return this._http.get('http://keycloakauth:8080/admin/realms/Enigma/users');
   }
 
   getChambres() {

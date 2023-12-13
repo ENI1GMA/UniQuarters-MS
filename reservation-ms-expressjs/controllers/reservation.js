@@ -96,4 +96,36 @@ module.exports = class ReservationController {
       res.status(500).json({ status: 'error', message: error.message });
     }
   }
+
+  static async cancelReservation(req, res) {
+    try {
+      const { id } = req.params;
+      if (!id) throw new Error('id is required');
+      const reservation = await ReservationService.cancelReservation(id);
+      res.status(200).json({
+        status: 'success',
+        message: 'Reservation cancelled',
+        data: {
+          reservation,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({ status: 'error', message: error.message });
+    }
+  }
+
+  static async getChambresReservationsStatistiques(req, res) {
+    try {
+      const chambresReservationsStatistiques = await ReservationService.getChambresReservationsStatistiques();
+      res.status(200).json({
+        status: 'success',
+        message: 'Get chambres reservations statistiques',
+        data: {
+          chambresReservations: chambresReservationsStatistiques,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({ status: 'error', message: error.message });
+    }
+  }
 };
