@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlocMS/src/main/java/com/example/musicmservice/Controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlocMS/src/main/java/com/example/musicmservice/Controller/BlocController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/enigma/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/enigma/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/controllers/ReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/controllers/ReclamationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/universite-ms/src/main/java/com/enigma/controller/UniversiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/universite-ms/src/main/java/com/enigma/controller/UniversiteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/controllers/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/controllers/reservation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/services/chambre.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/services/chambre.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EnigmaGatewayApp">
+  <component name="RunManager" selected="Spring Boot.EurekaDiscovApplication">
     <configuration name="BlocServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="BlocMS" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.musicmservice.BlocServiceApplication" />
@@ -141,7 +139,7 @@
       <workItem from="1702416166838" duration="1080000" />
       <workItem from="1702418380777" duration="9435000" />
       <workItem from="1702466461137" duration="2458000" />
-      <workItem from="1702485587518" duration="5247000" />
+      <workItem from="1702485587518" duration="5852000" />
     </task>
     <servers />
   </component>

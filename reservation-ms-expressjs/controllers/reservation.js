@@ -22,7 +22,7 @@ module.exports = class ReservationController {
       const { idChambre, idEtudiant } = req.params;
       if (!idChambre) throw new Error('idChambre is required');
       if (!idEtudiant) throw new Error('idEtudiant is required');
-      const existsChambreUser = await ReservationService.checkChambreUserExistance(idChambre, idEtudiant);
+      const existsChambreUser = await ReservationService.checkChambreExistance(idChambre);
       console.log(
         '🚀 ~ file: reservation.js:19 ~ ReservationController ~ createReservation ~ existsChambreUser:',
         existsChambreUser

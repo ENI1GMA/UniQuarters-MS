@@ -43,7 +43,7 @@ module.exports = class ReservationService {
     }
   }
 
-  static async checkChambreExistance(idChambre, idEtudiant) {
+  static async checkChambreExistance(idChambre) {
     try {
       const chambre = await ChambreService.getChambre(idChambre);
       console.log('🚀 ~ ReservationService ~ #checkChambreUserExistance ~ chambre:', chambre);
