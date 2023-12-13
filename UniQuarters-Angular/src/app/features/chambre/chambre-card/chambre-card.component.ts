@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Chambre } from 'src/app/models/chambre';
@@ -9,20 +9,19 @@ import { ReservationService } from 'src/app/services/reservation.service';
 @Component({
   selector: 'app-chambre-card',
   templateUrl: './chambre-card.component.html',
-  styleUrls: ['./chambre-card.component.scss']
+  styleUrls: ['./chambre-card.component.scss'],
 })
 export class ChambreCardComponent {
   @Input() chambre!: Chambre;
 
   constructor(
-    private reservationService :ReservationService,
+    private reservationService: ReservationService,
     private authService: AuthService,
-    public messageService :MessageService,
+    public messageService: MessageService
   ) {}
 
-  
   addReservation(idChambre: number) {
-    this.authService.getLoggedInEtudiant().subscribe({
+    /*this.authService.getLoggedInEtudiant().subscribe({
       next: (response: any) => {
         console.log('logged in etudiant response', response);
         const etudiantCin = response?.data?.etudiant.cin;
@@ -57,6 +56,6 @@ export class ChambreCardComponent {
           detail: error?.error?.message || 'Something went wrong Getting logged in etudiant',
         });
       },
-    });
+    });*/
   }
 }

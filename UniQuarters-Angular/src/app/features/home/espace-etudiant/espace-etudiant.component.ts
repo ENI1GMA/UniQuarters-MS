@@ -8,10 +8,9 @@ import { ReservationService } from 'src/app/services/reservation.service';
 @Component({
   selector: 'app-espace-etudiant',
   templateUrl: './espace-etudiant.component.html',
-  styleUrls: ['./espace-etudiant.component.scss']
+  styleUrls: ['./espace-etudiant.component.scss'],
 })
 export class EspaceEtudiantComponent {
-
   id!: number;
   isLoading: boolean = true;
 
@@ -19,14 +18,14 @@ export class EspaceEtudiantComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public authService : AuthService,
+    public authService: AuthService,
     private reservationService: ReservationService,
     public messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     // set id from params snapshot
-    this.authService.getLoggedInEtudiant().subscribe({
+    /*this.authService.getLoggedInEtudiant().subscribe({
       next: (response: any) => {
         console.log('logged in etudiant response', response);
         this.id = response?.data?.etudiant.id;
@@ -66,11 +65,10 @@ export class EspaceEtudiantComponent {
           detail: error?.error?.message || 'Something went wrong Getting logged in etudiant',
         });
       },
-    });    
-    
+    });   */
+
     console.log('🚀 ~ this.id:', this.id);
 
     // get reservations by id
-   
   }
 }
