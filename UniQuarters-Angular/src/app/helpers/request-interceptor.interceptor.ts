@@ -17,7 +17,7 @@ export class RequestInterceptorInterceptor implements HttpInterceptor {
     private tokenService: TokenService,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let authReq = request;
@@ -32,7 +32,10 @@ export class RequestInterceptorInterceptor implements HttpInterceptor {
         // handling unauthorized errors or token expired
         if (accessToken != null && refreshToken != null) {
           this.authService.refreshToken(refreshToken).subscribe({
-            next: (response) => { this.tokenService.setAccessToken(response.data.newToken); },
+            next: (response) => {
+              this.tokenService.setAccessToken(response.access_token);
+              this.tokenService.setRefreshToken(response.refresh_token);
+            },
             error: (error) => { this.tokenService.removeToken(); }
           }
           );
