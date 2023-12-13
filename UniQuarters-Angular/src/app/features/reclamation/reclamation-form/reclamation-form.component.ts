@@ -9,15 +9,14 @@ import { ReclamationService } from 'src/app/services/reclamation.service';
 @Component({
   selector: 'app-reclamation-form',
   templateUrl: './reclamation-form.component.html',
-  styleUrls: ['./reclamation-form.component.scss']
+  styleUrls: ['./reclamation-form.component.scss'],
 })
 export class ReclamationFormComponent implements OnInit {
-
   statusList = [
     ReclamationStatus.IN_PROGRESS,
     ReclamationStatus.PENDING,
     ReclamationStatus.REJECTED,
-    ReclamationStatus.RESOLVED
+    ReclamationStatus.RESOLVED,
   ];
   reclamationToSubmit = {} as Reclamation;
   id!: number;
@@ -28,7 +27,7 @@ export class ReclamationFormComponent implements OnInit {
     private authService: AuthService,
     private dialogConfig: DynamicDialogConfig,
     private dialogService: DynamicDialogRef
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (this.dialogConfig.data) {
@@ -47,22 +46,22 @@ export class ReclamationFormComponent implements OnInit {
     }
   }
 
-
   submit(f: NgForm) {
     // Add Reclamation
     if (this.id === undefined) {
-      this.reclamationToSubmit.userId = sessionStorage.getItem("userId")!;
-      this.reclamationToSubmit.date = this.today.toDateString();
-      this.reclamationService.addReclamation(this.reclamationToSubmit).subscribe();
+      this.reclamationToSubmit.userId = sessionStorage.getItem('userId')!;
+      this.reclamationToSubmit.date = this.today.toISOString().split('T')[0];
+      this.reclamationService
+        .addReclamation(this.reclamationToSubmit)
+        .subscribe();
       this.dialogService.close();
     }
     // Update Reclamation
     else {
-
-      this.reclamationService.updateReclamation(this.reclamationToSubmit).subscribe();
+      this.reclamationService
+        .updateReclamation(this.reclamationToSubmit)
+        .subscribe();
       this.dialogService.close();
     }
   }
-
-
 }

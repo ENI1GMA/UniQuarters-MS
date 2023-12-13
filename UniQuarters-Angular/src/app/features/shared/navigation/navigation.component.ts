@@ -39,7 +39,7 @@ export const navbarData = [
   {
     icon: 'pi pi-file',
     label: 'Reclamations',
-    routeLink: `/${RoutePaths.GESTION}/${RoutePaths.USER}`,
+    routeLink: `/${RoutePaths.GESTION}/${RoutePaths.RECLAMATION}`,
   },
   {
     icon: 'pi pi-map',
@@ -61,7 +61,8 @@ export const navbarData = [
     icon: 'pi pi-home',
     label: 'Chambres',
     routeLink: `/${RoutePaths.GESTION}/${RoutePaths.CHAMBRE}`,
-  },  {
+  },
+  {
     icon: 'pi pi-calendar',
     label: 'Réservations',
     routeLink: `/${RoutePaths.GESTION}/${RoutePaths.RESERVATION}`,
