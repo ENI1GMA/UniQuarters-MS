@@ -4,6 +4,7 @@ import com.enigma.entities.Universite;
 import com.enigma.repositories.UniversiteRepo;
 import com.enigma.responses.ApiResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,6 +60,18 @@ public class UniversiteController {
 
 
     }
+    @GetMapping("/nom/{nom}")
+    public ResponseEntity<ApiResponse> getUnisByNom(@PathVariable String nom) {
+        ApiResponse apiResponse = new ApiResponse();
+        try {
+            apiResponse.setResponse(org.springframework.http.HttpStatus.OK, "Universities retrieved");
+            List<Universite> universities = universiteRepo.findUniversitesByNomIsLike(nom);
+            System.out.println("unis: " + universities);
+            apiResponse.addData("universities", universities);
+        } catch (Exception e) {
+            apiResponse.setResponse(org.springframework.http.HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+        return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());  }
     @PostMapping("/testpost")
     public ResponseEntity<String> testPost() {
         return ResponseEntity.ok("Test POST request successful");

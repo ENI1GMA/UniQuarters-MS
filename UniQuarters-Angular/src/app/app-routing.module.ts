@@ -53,6 +53,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: `${RoutePaths.FOYER}`,
+        loadChildren: () =>
+          import('./features/foyers/foyers.module').then(
+            (m) => m.FoyersModule
+          ),
+      },
+      {
         path: `${RoutePaths.CHAMBRE}`,
         loadChildren: () =>
           import('./features/chambre/chambre.module').then(
