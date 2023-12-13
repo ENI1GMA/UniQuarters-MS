@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/controllers/ChambreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/controllers/ChambreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/enigma/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/enigma/config/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +136,7 @@
       <workItem from="1702418380777" duration="9435000" />
       <workItem from="1702466461137" duration="2458000" />
       <workItem from="1702485587518" duration="7872000" />
-      <workItem from="1702501627728" duration="1937000" />
+      <workItem from="1702501627728" duration="2567000" />
     </task>
     <servers />
   </component>

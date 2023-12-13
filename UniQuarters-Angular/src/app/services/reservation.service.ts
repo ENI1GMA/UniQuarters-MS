@@ -69,7 +69,7 @@ export class ReservationService {
   }
 
   validateReservation(id: String) {
-    return this._http.put(`${this.apiUrl}/valider/${id}`, {});
+    return this._http.patch(`${this.apiUrl}/valider/${id}`, {});
   }
 
   cancelReservation(cinEtudiant: number) {
