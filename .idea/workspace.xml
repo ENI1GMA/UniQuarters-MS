@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/controllers/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/controllers/reservation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/services/chambre.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/services/chambre.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/routes/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/routes/reservation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/services/reservation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +137,7 @@
       <workItem from="1702416166838" duration="1080000" />
       <workItem from="1702418380777" duration="9435000" />
       <workItem from="1702466461137" duration="2458000" />
-      <workItem from="1702485587518" duration="5852000" />
+      <workItem from="1702485587518" duration="6639000" />
     </task>
     <servers />
   </component>

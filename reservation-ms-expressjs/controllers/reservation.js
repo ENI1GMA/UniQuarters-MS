@@ -79,4 +79,21 @@ module.exports = class ReservationController {
       res.status(500).json({ status: 'error', message: error.message });
     }
   }
+
+  static async validerReservation(req, res) {
+    try {
+      const { idReservation } = req.params;
+      if (!idReservation) throw new Error('idReservation is required');
+      const reservation = await ReservationService.validerReservation(idReservation);
+      res.status(200).json({
+        status: 'success',
+        message: 'Reservation validée avec succès',
+        data: {
+          reservation,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({ status: 'error', message: error.message });
+    }
+  }
 };

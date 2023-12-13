@@ -17,7 +17,6 @@ async function sendRequestToService(serviceName, endpoint, method = 'get', data 
       url: serviceUrl,
       data,
     });
-    console.log('response', response);
 
     return response;
   } catch (error) {
