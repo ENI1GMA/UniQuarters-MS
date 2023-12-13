@@ -23,7 +23,8 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/reservation
       - EUREKA_CLIENT_HOST=serviceregistry
-      - EUREKA_IP_ADDRESS=172.19.0.3
+      - APP_HOST=reservationhost
+      - APP_IP_ADRESS=localhost
     image: "reservation-ms-expressjs"
     restart: always
     depends_on:
