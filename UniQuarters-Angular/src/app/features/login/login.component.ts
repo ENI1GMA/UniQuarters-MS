@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginUser).subscribe({
         next: (response) => {
           this.tokenService.setAccessToken(response.access_token);
-          // this.tokenService.setRefreshToken(response.refresh_token);
+          this.tokenService.setRefreshToken(response.refresh_token);
           // this.authService.setRole(response.role);
           // if(response.role == Role.Admin)
           this.router.navigate(["/gestion/dashboard"]);

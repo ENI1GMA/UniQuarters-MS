@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { LoginUser } from '../models/loginUser';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { TokenService } from './token.service';
-import { Etudiant } from '../models/etudiant';
-import { Role } from '../models/role';
 
-const tokenUrl = "http://keycloakauth:8080/realms/Enigma/protocol/openid-connect/token";
+const tokenUrl = "http://keycloakauth:8080/realms/Enigma/protocol/openid-connect/";
+
 
 @Injectable({
     providedIn: 'root'
@@ -26,10 +25,10 @@ export class AuthService {
     //     sessionStorage.setItem("ROLE",role);
     // }
 
-    // getLoggedInUser():Observable<any>{
-    //     console.log(this.tokenService.getAccessToken());
-    //     return this.http.get(keycloakUrl+"/userByToken/"+this.tokenService.getAccessToken());
-    // }
+    getLoggedInUser():Observable<any>{
+        // id property is sub : string
+        return this.http.get(tokenUrl+"/userinfo");
+    }
 
     // getLoggedInEtudiant():Observable<any>{
     //     return this.http.get(keycloakUrl+"/etudiantByToken/"+this.tokenService.getAccessToken());
@@ -41,11 +40,12 @@ export class AuthService {
         body.set("username",u.username);
         body.set("password",u.password);
         body.set("grant-type","password");
+        body.set("scope","openid profile email");
         let headers = new HttpHeaders({
             'Content-Type':'application/x-www-form-urlencoded'
         });
         let options = {headers: headers};
-        return this.http.post(tokenUrl,body,options);
+        return this.http.post(tokenUrl+"/token",body,options);
     }
 
     logout() {
@@ -53,9 +53,17 @@ export class AuthService {
         // return this.http.post(tokenUrl);
     }
 
-    // refreshToken(refreshToken:string):Observable<any>{
-    //     return this.http.post(keycloakUrl+"/refresh-token",refreshToken);
-    // }
+    refreshToken(refreshToken:string):Observable<any>{
+        let body = new URLSearchParams();
+        body.set("client_id","enigma-rest-api");
+        body.set("grant-type","refresh_token");
+        body.set("refresh_token",refreshToken); 
+        let headers = new HttpHeaders({
+            'Content-Type':'application/x-www-form-urlencoded'
+        });
+        let options = {headers: headers};
+        return this.http.post(tokenUrl+"/token",body,options);
+    }
   
     // register(e:Etudiant): Observable<any> {
     //     return this.http.post(keycloakUrl+"/register",e, { observe: 'response' }).pipe(retry(3), catchError(this.handleError));
