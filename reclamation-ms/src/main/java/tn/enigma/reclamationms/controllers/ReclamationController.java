@@ -9,7 +9,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/", allowedHeaders = "*")
 @RequestMapping("reclamations")
 public class ReclamationController {
     private final ReclamationService service;

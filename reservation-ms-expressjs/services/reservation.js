@@ -1,7 +1,6 @@
 // Reservation Service
 const ReservationModel = require('../models/Reservation.js');
 const ChambreService = require('./chambre.js');
-const UserService = require('./user.js');
 module.exports = class ReservationService {
   static async getAllReservations() {
     try {
@@ -44,34 +43,13 @@ module.exports = class ReservationService {
     }
   }
 
-  static async checkChambreUserExistance(idChambre, idEtudiant, bearerToken) {
-    let chambre, user;
+  static async checkChambreExistance(idChambre, idEtudiant) {
     try {
-      try {
-        chambre = await ChambreService.getChambre(idChambre);
-        console.log('🚀 ~ ReservationService ~ #checkChambreUserExistance ~ chambre:', chambre);
-      } catch (error) {
-        console.log('error chambre', error?.response?.data || error);
-        throw new Error(`get chambre ${idChambre} failed, ${error.response?.data?.message || error.message}`);
-      }
-
-      try {
-        user = await UserService.getUser(idEtudiant, bearerToken);
-        console.log('🚀 ~ ReservationService ~ #checkChambreUserExistance ~ user:', user);
-      } catch (error) {
-        console.log('error user', error?.response?.data || error);
-        throw new Error(
-          `get user ${idEtudiant} failed, ${error.response?.data?.message || error.response?.data?.error}`
-        );
-      }
-
-      if (!chambre || !user) {
-        throw new Error('chambre or user not found');
-      }
-      return true;
+      const chambre = await ChambreService.getChambre(idChambre);
+      console.log('🚀 ~ ReservationService ~ #checkChambreUserExistance ~ chambre:', chambre);
     } catch (error) {
-      console.log('🚀 ~ file: reservation.js:51 ~ ReservationService ~ #checkChambreUserExistance ~ error:', error);
-      throw error;
+      console.log('error chambre', error?.response?.data || error);
+      throw new Error(`get chambre ${idChambre} failed, ${error.response?.data?.message || error.message}`);
     }
   }
 

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:3081", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE})
 @RestController
 @RequestMapping("/universities")
 @AllArgsConstructor
