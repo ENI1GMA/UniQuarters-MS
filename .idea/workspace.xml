@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foyer-ms/src/main/java/com/enigma/controller/FoyerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/foyer-ms/src/main/java/com/enigma/controller/FoyerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foyer-ms/src/main/java/com/enigma/repositories/FoyerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/foyer-ms/src/main/java/com/enigma/repositories/FoyerRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/universite-ms/src/main/java/com/enigma/controller/UniversiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/universite-ms/src/main/java/com/enigma/controller/UniversiteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/models/Reclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/models/Reclamation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +137,7 @@
       <workItem from="1702418380777" duration="9435000" />
       <workItem from="1702466461137" duration="2458000" />
       <workItem from="1702485587518" duration="6639000" />
+      <workItem from="1702509425113" duration="359000" />
     </task>
     <servers />
   </component>
