@@ -60,8 +60,8 @@ export class ReservationService {
     return this._http.get(`${this.apiUrl}/${id}`);
   }
 
-  addReservation(idChambre: number, cinEtudiant: number) {
-    return this._http.post(`${this.apiUrl}/${idChambre}/${cinEtudiant}`, {});
+  addReservation(idChambre: number, idEtudiant: string) {
+    return this._http.post(`${this.apiUrl}/${idChambre}/${idEtudiant}`, {});
   }
 
   updateReservation(id: String) {
@@ -77,7 +77,7 @@ export class ReservationService {
   }
 
   getEtudiants() {
-    return this._http.get(environment.baseUrl + '/etudiants');
+    return this._http.get('http://keycloakauth:8080/admin/realms/Enigma/users');
   }
 
   getChambres() {
