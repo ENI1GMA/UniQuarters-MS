@@ -20,23 +20,13 @@ export class UniversiteFormComponent implements OnInit {
 
   id: number = 0;
   fbUni: FormGroup = new FormGroup({});
-  fbLogo: FormControl = new FormControl();
-  logoUni!:File;
+ 
+  
   university!: Universite;
   uni: Universite = new Universite();
 
   gouvernorats: string[] = this.uniService.getGouvernorats();
-  map!: Leaflet.Map;
-  marker!: Leaflet.Marker;
-  options = {
-    layers: [
-      Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      })
-    ],
-    zoom: 16,
-    center: { lat: 28.626137, lng: 79.821603 }
-  }
+ 
   constructor(private uniService: UniversiteService,
     private fb: FormBuilder,
     private readonly dialogService: DynamicDialogRef,
@@ -53,16 +43,11 @@ export class UniversiteFormComponent implements OnInit {
       nom: ['', [Validators.required, Validators.minLength(3)]],
       adresse: ['', [Validators.required]],
 
-      foyer: this.fb.group({
-        nom: ['', [Validators.required, Validators.minLength(3)]],
-        capacite: ['', [Validators.required]],
-        lat: ['', Validators.required],
-        lng: ['', Validators.required],
-      }),
+     
 
     })
 
-    this.fbLogo= this.fb.control('');
+ 
 
     if (this.id != undefined) {
       this.uniService.fetchUniById(this.id).subscribe({
@@ -72,16 +57,14 @@ export class UniversiteFormComponent implements OnInit {
 
           this.onUniExist(this.university);
 
-          this.initMarkers(this.university.foyer.lat,this.university.foyer.lng);
+       
 
         }
 
       });
 
     }
-    else{
-      this.fbLogo.setValidators([Validators.required]);
-    }
+   
    
   
   }
@@ -89,12 +72,11 @@ export class UniversiteFormComponent implements OnInit {
 
 
   add() {
-    const formData=new FormData();
-    formData.append('universite', JSON.stringify(this.fbUni.getRawValue()));
-    formData.append('logo',this.logoUni);
+   
+   
     if (this.id !== undefined) {
       console.log( this.fbUni.getRawValue())
-      this.uniService.updateUniversity(this.id,formData).subscribe((data) => {
+      this.uniService.updateUniversity(this.id,this.fbUni.getRawValue()).subscribe((data) => {
         this.uniService.getAllUniversites().subscribe(
           (response: any) => {
             this.uniService.data = response.data.universities;
@@ -120,8 +102,8 @@ export class UniversiteFormComponent implements OnInit {
     }
     else {
     
-     console.log(formData.get('logo'))
-      this.uniService.addUniversity(formData).subscribe((data) => {
+   
+      this.uniService.addUniversity(this.fbUni.getRawValue()).subscribe((data) => {
         console.log(this.fbUni.getRawValue())
         this.messageService.add({
           severity: 'success',
@@ -155,87 +137,43 @@ export class UniversiteFormComponent implements OnInit {
 
 
     });
-    this.fbUni.get('foyer')?.patchValue({
-      nom: uni.foyer.nom,
-      capacite: uni.foyer.capacite,
-      lat: uni.foyer.lat,
-      lng: uni.foyer.lng
-    })
+   
   }
 
 
-  initMarkers(lat: number, lng: number) {
-    const initialMarker =
-    {
-      position: { lat: lat, lng: lng },
-      draggable: true
-
-    }
-
+  
       
 
-    const data = initialMarker;
-    const marker = this.generateMarker(data);
-    marker.addTo(this.map).bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
-    this.map.panTo(data.position);
-    this.marker = marker;
+   
 
-  }
-
-  generateMarker(data: any) {
-    return Leaflet.marker(data.position, { draggable: data.draggable })
-
-  }
-
-  onMapReady($event: Leaflet.Map) {
-    this.map = $event;
-    if (this.id == undefined) {
-      this.initMarkers(33.892166,9.561555);
-
-    }
-   this.map.on('dblclick', (event) => {
-    const lat = event.latlng.lat;
-    const lng = event.latlng.lng;
-
-    this.fbUni.get('foyer')!.patchValue({
-      lat: lat,
-      lng: lng
-    });
-  });
-    
-
-  }
-
- onUpload(event:any){
-  const file= event.target.files[0];
-  this.logoUni=file;
- }
-
-
-
-
-  get foyerNom() {
-    return this.fbUni.get('foyer.nom');
-  }
-  get foyerLat() {
-    return this.fbUni.get('foyer.lat');
-  }
-  get foyerLng() {
-    return this.fbUni.get('foyer.lng');
-  }
-  get capacite() {
-    return this.fbUni.get('foyer.capacite');
-  }
   
-  get foyerCapacite() {
-    return this.fbUni.get('foyer.capacite');
-  }
+
+ 
+
+
+
+  // get foyerNom() {
+  //   return this.fbUni.get('foyer.nom');
+  // }
+  // get foyerLat() {
+  //   return this.fbUni.get('foyer.lat');
+  // }
+  // get foyerLng() {
+  //   return this.fbUni.get('foyer.lng');
+  // }
+  // get capacite() {
+  //   return this.fbUni.get('foyer.capacite');
+  // }
+  
+  // get foyerCapacite() {
+  //   return this.fbUni.get('foyer.capacite');
+  // }
   get nom() {
     return this.fbUni.get('nom');
   }
-  get logo() {
-    return this.fbUni.get('logo');
-  }
+  // get logo() {
+  //   return this.fbUni.get('logo');
+  // }
   get adresse() {
     return this.fbUni.get('adresse');
   }
