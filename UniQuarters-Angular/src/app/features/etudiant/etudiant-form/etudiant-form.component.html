@@ -1,0 +1,87 @@
+<div class="application mt-5">
+    <form [formGroup]="etudiantForm" (ngSubmit)="submit()">
+        <div class="formgrid grid p-fluid">
+            <div class="field col-6">
+                <label for="email">Email</label>
+                <input pInputText id="email" formControlName="email" />
+                <ng-container *ngFor="let validation of validation_messages.email">
+                    <div *ngIf="etudiantForm.get('email')?.touched && etudiantForm.get('email')?.hasError(validation.type)"
+                    class="invalid-feedback">
+                    {{validation.message}}
+                </div>
+            </ng-container>
+            <div *ngIf="mailExists" class="invalid-feedback">
+                Email déja utilisé dans un autre compte
+            </div>
+            </div>
+            <div class="field col-6">
+                <label for="cin">CIN</label>
+                <input pInputText id="cin" formControlName="cin" pKeyFilter="int" [maxLength]="8" />
+                <ng-container *ngFor="let validation of validation_messages.cin">
+                    <div *ngIf="etudiantForm.get('cin')?.touched && etudiantForm.get('cin')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label>Password</label>
+                <p-password id="password" formControlName="password"></p-password>
+                <ng-container *ngFor="let validation of validation_messages.password">
+                    <div *ngIf="etudiantForm.get('password')?.touched && etudiantForm.get('password')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label for="ecole">Ecole</label>
+                <input pInputText id="ecole" formControlName="ecole" />
+                <ng-container *ngFor="let validation of validation_messages.ecole">
+                    <div *ngIf="etudiantForm.get('ecole')?.touched && etudiantForm.get('ecole')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label for="nom">Nom</label>
+                <input pInputText id="nom" formControlName="nom" />
+                <ng-container *ngFor="let validation of validation_messages.nom">
+                    <div *ngIf="etudiantForm.get('nom')?.touched && etudiantForm.get('nom')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label for="prenom">Prenom</label>
+                <input pInputText id="prenom" formControlName="prenom" />
+                <ng-container *ngFor="let validation of validation_messages.prenom">
+                    <div *ngIf="etudiantForm.get('prenom')?.touched && etudiantForm.get('prenom')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label>Date de naissance</label>
+                <p-calendar [appendTo]="'body'" [maxDate]="today" [touchUI]="true" id="dateNaissance"
+                    formControlName="dateNaissance"></p-calendar>
+                <ng-container *ngFor="let validation of validation_messages.dateNaissance">
+                    <div *ngIf="etudiantForm.get('dateNaissance')?.touched && etudiantForm.get('dateNaissance')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label >Etat</label>
+                <p-selectButton formControlName="enabled" [options]="stateOptions" optionLabel="label" optionValue="value"></p-selectButton>
+            </div>
+            <div class="footer-popup mt-4">
+                <input type="submit" class="primary-button" value="Confirmer" [disabled]="etudiantForm.invalid">
+            </div>
+        </div>
+    </form>
+</div>

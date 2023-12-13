@@ -1,0 +1,8 @@
+<p>{{ (uni.foyer.lat | latLngToAddress: uni.foyer.lng) | async }}</p>
+
+<div class="map-container"
+  leaflet
+  [leafletOptions]="options"
+  (leafletMapReady)="onMapReady($event)"
+  (leafletClick)="mapClicked($event)">
+</div>

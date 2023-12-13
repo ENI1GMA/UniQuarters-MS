@@ -1,0 +1,25 @@
+<div class="container" style="margin-top: 20px;">
+
+  <h2 class="title blocTitle py-4">
+    Scheduler
+  </h2>
+
+  <div class="card p-4">
+    <div class="row">
+      <div class="col-md-6 selectContainer">
+        <label for="locationFilter" class="label">Filter By Bloc</label>
+        <select  id="locationFilter" class="select custom-select" (change)="onLocationFilterChanged($event)">
+          <option value="">All</option>
+          <option *ngFor="let bloc of ListTravaux" [value]="bloc.id">{{ bloc.text }}</option>
+        </select>
+      </div>
+
+    </div>
+    <dx-scheduler #scheduler id="scheduler" [dataSource]="store"
+                  (onAppointmentFormOpening)="onAppointmentFormCreated($event)" >
+      <dxi-resource fieldExpr="bloc" label="Bloc" [dataSource]="ListTravaux">
+      </dxi-resource>
+    </dx-scheduler>
+
+  </div>
+</div>

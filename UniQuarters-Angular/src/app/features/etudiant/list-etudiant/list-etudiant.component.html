@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="title py-4">Gestion Des Etudiants
+    <button class="secondary-button" style="float:right" (click)="Add()">
+      <span class="pi pi-plus" aria-hidden="true"></span> Ajouter un etudiant
+    </button>
+  </h2>
+
+  <div class="card p-4">
+    <p-table #dt [value]="etudiantsList" [rowHover]="true" columnResizeMode="expand" [rows]="5" styleClass="p-datatable"
+      [showCurrentPageReport]="true" [paginator]="true" currentPageReportTemplate="{totalRecords} etudiant(s)"
+      [filterDelay]="0">
+      <ng-template pTemplate="headergrouped">
+        <tr class="bg-white">
+          <th>Email </th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>CIN</th>
+          <th>Etat</th>
+          <th>Actions</th>
+        </tr>
+
+      </ng-template>
+      <ng-template pTemplate="body" let-e>
+        <tr class="p-selectable-row">
+          <td>{{e.user.email}}</td>
+          <td>{{e.nom}}</td>
+          <td>{{e.prenom}}</td>
+          <td>{{e.cin}}</td>
+          <td>
+            <p-tag *ngIf="e.user.enabled" severity="success" value="Active"></p-tag>
+            <p-tag *ngIf="!e.user.enabled" severity="success" value="Desactivé"></p-tag>
+          </td>
+          <td class="action">
+            <img src="../../../../assets/icon/edit.svg" alt="edit" (click)="Edit(e.id)">
+            <img src="../../../../assets/icon/trash.svg" alt="trash" (click)="Delete(e.id)">
+            <img src="../../../../assets/icon/settings.svg" alt="reset" (click)="Reset(e.user.email)">
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">Aucune etudiant trouvée.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-confirmDialog header="Confirmation"></p-confirmDialog>
+    <p-toast></p-toast>
+
+  </div>
+</div>

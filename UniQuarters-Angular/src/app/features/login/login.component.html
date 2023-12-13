@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 10%;">
+    <p-card>
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <div class="flex flex-column md:flex-row">
+                <div class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
+                    <div class="flex flex-wrap justify-content-center align-items-center gap-2">
+                        <label class="w-6rem">Username</label>
+                        <input formControlName="username" pInputText id="username" type="text" class="w-12rem" />
+                    </div>
+                    <div class="flex flex-wrap justify-content-center align-items-center gap-2">
+                        <label class="w-6rem">Mot de passe</label>
+                        <input formControlName="password" pInputText id="password" type="password" class="w-12rem" />
+                    </div>
+                    <div *ngIf="errorMsgs.length > 0" class="p-message p-message-error p-component" style="width: 30%">
+                        <div class="p-message-wrapper p-d-flex p-flex-row p-ai-center">
+                            <span class="p-message-icon pi pi-times-circle"></span>
+                            <div *ngFor="let error of errorMsgs">
+                                {{ error.detail }}
+                            </div>
+                        </div>
+                    </div>
+                    <p-button type="submit" label="Login" icon="pi pi-user" styleClass="w-10rem mx-auto"></p-button>
+                </div>
+                <div class="w-full md:w-2">
+                    <p-divider layout="vertical" styleClass="hidden md:flex"><b>OU</b></p-divider>
+                    <p-divider layout="horizontal" styleClass="flex md:hidden" [align]="'center'"><b>OU</b></p-divider>
+                </div>
+                <div class="w-full md:w-5 flex align-items-center justify-content-center py-5">
+                    <p-button [routerLink]="['/register']" label="S'inscrire" icon="pi pi-user-plus"
+                        styleClass="p-button-success w-10rem"></p-button>
+                </div>
+            </div>
+        </form>
+    </p-card>
+</div>

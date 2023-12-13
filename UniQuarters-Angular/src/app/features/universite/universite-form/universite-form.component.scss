@@ -1,0 +1,25 @@
+.footer-popup{
+    .primary-button{
+        float: right;
+
+    }
+}
+.map-container {
+    height: 300px;
+  }
+  input[type=file]::file-selector-button {
+    border: 2px solid #2f208d;
+    padding: .2em .4em;
+    border-radius: .2em;
+    background-color: #28246a;
+    transition: 1s;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color: #3070b0;
+    border: 2px solid #f2f3f3;
+  }
+

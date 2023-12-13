@@ -1,0 +1,65 @@
+<p-confirmDialog header="Confirmation"></p-confirmDialog>
+<p-toast></p-toast>
+
+<div class="product-card "  *ngIf="chambre">
+
+
+    <div class="product-img">
+        <div class="flex flex-column align-items-center" *ngIf="chambre.picture; else noImg">
+            <app-chambre-review [review]="chambre.review"></app-chambre-review> 
+            <div>
+                <img src="" alt="Image du produit" />
+            </div>
+
+        </div>
+        <ng-template #noImg>
+            <div class="flex flex-column align-items-center">
+                <!-- <app-product-index [index]="product.score.global"></app-product-index> -->
+                <div class="no-image">
+                    <img src="../../../../assets/img/no-img.png" alt="Image non disponible">
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <h1>{{ chambre.numero }}</h1>
+    <p><span class="title">Description</span>  {{ chambre.description }}</p>
+    <div class="flex button-wrap gap-3 mt-2">
+        <p-chip *ngIf="chambre.workspace" [label]="chambre.workspace ? 'Espace de travail' : ''"
+        [style]="{'background-color': chambre.workspace ? '#33cc99' : 'transparent', 'color': chambre.balcony ? '#fff' : '#000'}"></p-chip>
+      <p-chip *ngIf="chambre.balcony" [label]="chambre.balcony ? 'Balcon' : ''"
+        [style]="{'background-color': chambre.balcony ? '#33cc99' : 'transparent', 'color': chambre.balcony ? '#fff' : '#000'}"></p-chip>
+      <p-chip *ngIf="chambre.wifi" [label]="chambre.wifi ? 'Wifi' : ''"
+        [style]="{'background-color': chambre.wifi ? '#33cc99' : 'transparent', 'color': chambre.wifi ? '#fff' : '#000'}"></p-chip>
+      <p-chip *ngIf="chambre.kitchenette" [label]="chambre.kitchenette ? 'Kitchenette' : ''"
+        [style]="{'background-color': chambre.kitchenette ? '#33cc99' : 'transparent', 'color': chambre.kitchenette ? '#fff' : '#000'}"></p-chip>
+      <p-chip *ngIf="chambre.airConditioning" [label]="chambre.airConditioning ? 'Climatisation' : ''"
+        [style]="{'background-color': chambre.airConditioning ? '#33cc99' : 'transparent', 'color': chambre.airConditioning ? '#fff' : '#000'}"></p-chip>
+      <p-chip *ngIf="chambre.petFriendly" [label]="chambre.petFriendly ? 'Animaux acceptés' : ''"
+        [style]="{'background-color': chambre.petFriendly ? '#33cc99' : 'transparent', 'color': chambre.petFriendly ? '#fff' : '#000'}"></p-chip>
+      <p-chip *ngIf="chambre.privateBathroom" [label]="chambre.privateBathroom ? 'Salle de bains privée' : ''"
+        [style]="{'background-color': chambre.privateBathroom ? '#33cc99' : 'transparent', 'color': chambre.privateBathroom ? '#fff' : '#000'}"></p-chip>
+    </div>
+    <button class="col-12" (click)="addReservation(chambre.id)">
+        Réserver Chambre
+    </button>
+
+    <!-- <div class="not-empty" *ngIf="product.score.disassembly !== null && product.score.price !== null && product.score.documentation !== null && product.score.sparePartsAvailability !== null && product.score.specific !== null ; else empty">
+        <p class="h5">{{ "result.note" | translate: { note: product.score.global } }}</p>
+        <hr/>
+        <p> {{ "result.documentation" | translate }}: <span>{{ product.score.documentation }}</span><span>/10 </span></p>
+        <app-progress-bar [note]=" product.score.documentation"></app-progress-bar>
+        <p>{{ "result.windability" | translate }}: <span>{{ product.score.disassembly }}</span><span>/10 </span></p>
+        <app-progress-bar [note]="product.score.disassembly"></app-progress-bar>
+        <p>{{ "result.availablity" | translate }}: <span>{{ product.score.sparePartsAvailability }}</span><span>/10 </span></p>
+        <app-progress-bar [note]="  product.score.sparePartsAvailability"></app-progress-bar>
+        <p>{{ "result.price" | translate }}: <span>{{ product.score.price }}</span><span>/10 </span></p>
+        <app-progress-bar [note]=" product.score.price"></app-progress-bar>
+        <p>{{ "result.counter" | translate }}: <span>{{ product.score.specific }}</span><span>/10 </span></p>
+        <app-progress-bar [note]=" product.score.specific"></app-progress-bar>
+        <p-chart type="radar" [chambre]="chambre" [options]="chartOptions" [style]="{ width: '40%' }"></p-chart>
+    </div> -->
+    <ng-template #empty>
+        <hr>
+        <p class="h5">{{ chambre.id }}</p>
+    </ng-template>
+</div>

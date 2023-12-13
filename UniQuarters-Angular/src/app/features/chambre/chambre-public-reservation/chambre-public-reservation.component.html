@@ -1,0 +1,148 @@
+<p-confirmDialog header="Confirmation"></p-confirmDialog>
+<p-toast></p-toast>
+<div class="container">
+    <h2 class="title py-4">Réserver Une Chambre
+    
+    </h2>
+  
+    <div class="card p-4">
+        <div class="home">
+            <section class="content col-12 ">
+        
+          <div class="heigth-40">
+        
+            <div class="grid" *ngIf="chambres">
+        
+                <div class="col-12 md:col-6 xs:col-12 sm:col-6 xl:col-4 lg:col-6" *ngFor="let chambre of chambres">
+        
+                    <app-chambre-card [chambre]="chambre"></app-chambre-card>
+        
+                </div>
+        
+            </div>
+
+            <div class="grid" *ngIf="!chambres">
+        
+                <div class=" col-12 md:col-6 lg:col-4" >
+                        
+                    <div class="border-round border-1 surface-border p-4 surface-card mb-2">
+                        <div class="flex mb-3">
+                            <p-skeleton shape="circle" size="4rem" styleClass="mr-2"></p-skeleton>
+                            <div>
+                                <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton height=".5rem"></p-skeleton>
+                            </div>
+                        </div>
+                        <p-skeleton width="100%" height="150px"></p-skeleton>
+                        <div class="flex justify-content-between mt-3">
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                        </div>
+                    </div>
+            
+                    <div class="border-round border-1 surface-border p-4 surface-card mb-2">
+                        <div class="flex mb-3">
+                            <p-skeleton shape="circle" size="4rem" styleClass="mr-2"></p-skeleton>
+                            <div>
+                                <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton height=".5rem"></p-skeleton>
+                            </div>
+                        </div>
+                        <p-skeleton width="100%" height="150px"></p-skeleton>
+                        <div class="flex justify-content-between mt-3">
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                        </div>
+                    </div>
+        
+    
+        
+                </div>
+        
+                <div class=" col-12 md:col-6 lg:col-4" >
+                        
+                    <div class="border-round border-1 surface-border p-4 surface-card mb-2">
+                        <div class="flex mb-3">
+                            <p-skeleton shape="circle" size="4rem" styleClass="mr-2"></p-skeleton>
+                            <div>
+                                <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton height=".5rem"></p-skeleton>
+                            </div>
+                        </div>
+                        <p-skeleton width="100%" height="150px"></p-skeleton>
+                        <div class="flex justify-content-between mt-3">
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                        </div>
+                    </div>
+            
+                    <div class="border-round border-1 surface-border p-4 surface-card mb-2">
+                        <div class="flex mb-3">
+                            <p-skeleton shape="circle" size="4rem" styleClass="mr-2"></p-skeleton>
+                            <div>
+                                <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton height=".5rem"></p-skeleton>
+                            </div>
+                        </div>
+                        <p-skeleton width="100%" height="150px"></p-skeleton>
+                        <div class="flex justify-content-between mt-3">
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                        </div>
+                    </div>
+        
+    
+        
+                </div>
+
+                <div class=" col-12 md:col-6 lg:col-4 " >
+                        
+                    <div class="border-round border-1 surface-border p-4 surface-card mb-2">
+                        <div class="flex mb-3">
+                            <p-skeleton shape="circle" size="4rem" styleClass="mr-2"></p-skeleton>
+                            <div>
+                                <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton height=".5rem"></p-skeleton>
+                            </div>
+                        </div>
+                        <p-skeleton width="100%" height="150px"></p-skeleton>
+                        <div class="flex justify-content-between mt-3">
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                        </div>
+                    </div>
+            
+                    <div class="border-round border-1 surface-border p-4 surface-card mb-2">
+                        <div class="flex mb-3">
+                            <p-skeleton shape="circle" size="4rem" styleClass="mr-2"></p-skeleton>
+                            <div>
+                                <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                                <p-skeleton height=".5rem"></p-skeleton>
+                            </div>
+                        </div>
+                        <p-skeleton width="100%" height="150px"></p-skeleton>
+                        <div class="flex justify-content-between mt-3">
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                            <p-skeleton width="4rem" height="2rem"></p-skeleton>
+                        </div>
+                    </div>
+        
+    
+        
+                </div>
+            </div>
+        
+        
+        </div>
+        </section>
+        
+
+        </div>
+    </div>
+</div>

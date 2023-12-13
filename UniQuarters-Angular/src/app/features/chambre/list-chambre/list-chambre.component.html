@@ -1,0 +1,78 @@
+<div class="container">
+  <h2 class="title py-4">Gestion Des Chambres
+    <button class="secondary-button" style="float:right" (click)="Add()">
+      <span class="pi pi-plus" aria-hidden="true"></span> Ajouter une chambre
+    </button>
+  </h2>
+
+  <div class="card p-4">
+    <p-table #dt [value]="chambreService.chambres" dataKey="id" styleClass="p-datatable" [rowHover]="true"
+      columnResizeMode="expand" [paginator]="true" currentPageReportTemplate="{totalRecords} chambre(s)" [rows]="10"
+      [showCurrentPageReport]="true" [filterDelay]="0">
+      <ng-template pTemplate="header">
+        <tr class="bg-white">
+          <th>Numéro Chambre</th>
+          <th>Nom Bloc</th>
+          <th>Facilities</th>
+          <th>Description</th>
+          <th>Type de Chambre</th>
+          <th>Disponible</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr>
+          <td>{{data.numero}}</td>
+          <td>{{data.bloc.nom}}</td>
+
+          <td>
+
+            <p-chip *ngIf="data.workspace" [label]="data.workspace ? 'Espace de travail' : ''"
+              [style]="{'background-color': data.workspace ? '#33cc99' : 'transparent', 'color': data.balcony ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.balcony" [label]="data.balcony ? 'Balcon' : ''"
+              [style]="{'background-color': data.balcony ? '#33cc99' : 'transparent', 'color': data.balcony ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.wifi" [label]="data.wifi ? 'Wifi' : ''"
+              [style]="{'background-color': data.wifi ? '#33cc99' : 'transparent', 'color': data.wifi ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.kitchenette" [label]="data.kitchenette ? 'Kitchenette' : ''"
+              [style]="{'background-color': data.kitchenette ? '#33cc99' : 'transparent', 'color': data.kitchenette ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.airConditioning" [label]="data.airConditioning ? 'Climatisation' : ''"
+              [style]="{'background-color': data.airConditioning ? '#33cc99' : 'transparent', 'color': data.airConditioning ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.petFriendly" [label]="data.petFriendly ? 'Animaux acceptés' : ''"
+              [style]="{'background-color': data.petFriendly ? '#33cc99' : 'transparent', 'color': data.petFriendly ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.privateBathroom" [label]="data.privateBathroom ? 'Salle de bains privée' : ''"
+              [style]="{'background-color': data.privateBathroom ? '#33cc99' : 'transparent', 'color': data.privateBathroom ? '#fff' : '#000'}"></p-chip>
+  <!--        <td>
+
+            <p-chip *ngIf="data.workspace" [label]="data.workspace ? 'Espace de travail' : ''" [style]="{'background-color': data.workspace ? '#33cc99' : 'transparent'}"></p-chip>
+            <p-chip *ngIf="data.balcony" [label]="data.balcony ? 'Balcon' : ''" [style]="{'background-color': data.balcony ? '#33cc99' : 'transparent', 'color': data.balcony ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.wifi" [label]="data.wifi ? 'Wifi' : ''" [style]="{'background-color': data.wifi ? '#33cc99' : 'transparent', 'color': data.wifi ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.kitchenette" [label]="data.kitchenette ? 'Kitchenette' : ''" [style]="{'background-color': data.kitchenette ? '#33cc99' : 'transparent', 'color': data.kitchenette ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.airConditioning" [label]="data.airConditioning ? 'Climatisation' : ''" [style]="{'background-color': data.airConditioning ? '#33cc99' : 'transparent', 'color': data.airConditioning ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.petFriendly" [label]="data.petFriendly ? 'Animaux acceptés' : ''" [style]="{'background-color': data.petFriendly ? '#33cc99' : 'transparent', 'color': data.petFriendly ? '#fff' : '#000'}"></p-chip>
+            <p-chip *ngIf="data.privateBathroom" [label]="data.privateBathroom ? 'Salle de bains privée' : ''" [style]="{'background-color': data.privateBathroom ? '#33cc99' : 'transparent', 'color': data.privateBathroom ? '#fff' : '#000'}"></p-chip>
+-->
+
+          </td>
+          <td>{{data.description}}</td>
+          <td>{{data.type}}</td>
+          <td>{{data.available ? 'Oui' : 'Non'}}</td>
+
+
+          <td class="action">
+            <img src="../../../../assets/icon/edit.svg" alt="edit" (click)="Edit(data)">
+            <img src="../../../../assets/icon/trash.svg" alt="trash" (click)="Delete(data)">
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">Aucune chambre trouvée</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-confirmDialog header="Confirmation"></p-confirmDialog>
+
+    <p-toast></p-toast>
+  </div>
+</div>
+

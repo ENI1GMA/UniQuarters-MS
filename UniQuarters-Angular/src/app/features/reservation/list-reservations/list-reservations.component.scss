@@ -1,0 +1,16 @@
+@import '../../../styles/variables.scss';
+.button-column {
+  display: flex;
+  gap: 8px; /* Adjust the gap value as needed */
+}
+
+/* YourComponent.css */
+a:hover {
+  opacity: 0.7; /* Change the opacity value based on your preference */
+  transition: opacity 0.3s ease; /* Adjust the duration and timing function */
+}
+
+.info-button {
+  background-color: $grey-color-dark;
+  margin-right: 10px;
+}

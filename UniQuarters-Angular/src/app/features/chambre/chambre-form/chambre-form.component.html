@@ -1,0 +1,195 @@
+
+<p-progressBar class="top-progress-bar" [style]="{ height: '3px' }" mode="indeterminate" *ngIf="loading"></p-progressBar>
+<p-confirmDialog header="Confirmation"></p-confirmDialog>
+<p-toast></p-toast>
+<div class="application mt-5">
+  <div [formGroup]="chambreService.AddOrEditChambreForm" class="form">
+    <div class="grid">
+      <div class="col-12  px-4 border-rigth ">
+        <div class="grid">
+
+          <div class="col-12" *ngIf="chambreService.AddOrEditChambreForm.value.id">
+            <span class="label mt-2 required">Numéro de Chambre </span>
+            <input id="numero" formControlName="numero" type="number" class="inputtext-sm full-width mt-2"
+              placeholder="Saisir le numéro de chambre" pInputText />
+              <div *ngIf="chambreService.AddOrEditChambreForm.get('numero')?.hasError('required') && (chambreService.AddOrEditChambreForm.get('numero')?.dirty || chambreService.AddOrEditChambreForm.get('numero')?.touched)">
+                <div class="invalid-feedback mt-2">{{ 'Numero de Chambre is required' }}</div>
+              </div>
+              <div *ngIf="chambreService.AddOrEditChambreForm.get('numero')?.hasError('pattern') && (chambreService.AddOrEditChambreForm.get('numero')?.dirty || chambreService.AddOrEditChambreForm.get('numero')?.touched)">
+                <div class="invalid-feedback mt-2">{{ 'Numero de Chambre must contain at least 3 digits and no special characters' }}</div>
+              </div>
+          </div>
+          <div class="col-6" *ngIf="!chambreService.AddOrEditChambreForm.value.id">
+            <span class="label mt-2 required">Numéro de Chambre </span>
+            <input id="numero" formControlName="numero" type="number" class="inputtext-sm full-width mt-2"
+              placeholder="Saisir le numéro de chambre" pInputText />
+              <div *ngIf="chambreService.AddOrEditChambreForm.get('numero')?.hasError('required') && (chambreService.AddOrEditChambreForm.get('numero')?.dirty || chambreService.AddOrEditChambreForm.get('numero')?.touched)">
+                <div class="invalid-feedback mt-2">{{ 'Numero de Chambre is required' }}</div>
+              </div>
+              <div *ngIf="chambreService.AddOrEditChambreForm.get('numero')?.hasError('pattern') && (chambreService.AddOrEditChambreForm.get('numero')?.dirty || chambreService.AddOrEditChambreForm.get('numero')?.touched)">
+                <div class="invalid-feedback mt-2">{{ 'Numero de Chambre must contain at least 3 digits and no special characters' }}</div>
+              </div>
+          </div>
+          <div class="col-6 " [formGroup]="chambreService.blocForm"
+            *ngIf="!chambreService.AddOrEditChambreForm.value.id">
+            <span class="label required">Bloc </span>
+            <ng-select [items]="blocService.data" bindLabel="nom" bindValue="nom" formControlName="selectedBloc"
+              class="inputtext-sm full-width mt-2">
+              <ng-template let-item="item" pInputText>
+                {{ item.nom }}
+              </ng-template>
+            </ng-select>
+            <div *ngIf="chambreService.blocForm.get('selectedBloc')?.hasError('required') && (chambreService.blocForm.get('selectedBloc')?.dirty || chambreService.blocForm.get('selectedBloc')?.touched)" class="invalid-feedback mt-2">
+              {{ 'Bloc is required' }}
+            </div>
+          </div>
+          <div class="col-12 ">
+            <span class="label required">Description </span>
+            <textarea id="description" formControlName="description" class="inputtext-sm full-width mt-2"
+              placeholder="Saisir la description" pInputTextarea [autoResize]="true"></textarea>
+              <div *ngIf="chambreService.AddOrEditChambreForm.get('description')?.hasError('required') && (chambreService.AddOrEditChambreForm.get('description')?.dirty || chambreService.AddOrEditChambreForm.get('description')?.touched)">
+                <div class="invalid-feedback mt-2">{{ 'Description is required' }}</div>
+              </div>
+              <div *ngIf="chambreService.AddOrEditChambreForm.get('description')?.hasError('minlength') && (chambreService.AddOrEditChambreForm.get('description')?.dirty || chambreService.AddOrEditChambreForm.get('description')?.touched)">
+                <div class="invalid-feedback mt-2">{{ 'Description must be at least 6 characters long' }}</div>
+              </div>
+              <div *ngIf="chambreService.AddOrEditChambreForm.get('description')?.hasError('pattern') && (chambreService.AddOrEditChambreForm.get('description')?.dirty || chambreService.AddOrEditChambreForm.get('description')?.touched)">
+                <div class="invalid-feedback mt-2">{{ 'Description must not contain special characters' }}</div>
+              </div>
+          </div>
+          <div class="col-12 ">
+            <span class="label required">Facilities</span>
+
+            <div class="flex button-wrap gap-3 mt-2">
+              <!-- Wifi Button -->
+              <button pButton type="button" (click)="toggleBooleanValue('wifi')"
+                [ngClass]="{'active': chambreService.AddOrEditChambreForm.get('wifi')!.value, 'inactive': !chambreService.AddOrEditChambreForm.get('wifi')!.value}"
+                [ngStyle]="{
+                  'background-color': chambreService.AddOrEditChambreForm.get('wifi')!.value ? '#36417d' : 'white',
+                  'color': chambreService.AddOrEditChambreForm.get('wifi')!.value ? 'white' : '#36417d'
+                }">
+                <i class="pi pi-wifi mr-2"
+                  [ngClass]="{'initial-color': !chambreService.AddOrEditChambreForm.get('wifi')!.value}"></i>
+                <span
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('wifi')!.value ? '#36417d' : 'white'}">Wifi</span>
+              </button>
+
+              <!-- Air Conditioning Button -->
+              <button pButton type="button" (click)="toggleBooleanValue('airConditioning')"
+                [ngClass]="{'active': chambreService.AddOrEditChambreForm.get('airConditioning')!.value, 'inactive': !chambreService.AddOrEditChambreForm.get('airConditioning')!.value}"
+                [ngStyle]="{
+                  'background-color': chambreService.AddOrEditChambreForm.get('airConditioning')!.value ? '#36417d' : 'white',
+                  'color': chambreService.AddOrEditChambreForm.get('airConditioning')!.value ? 'white' : '#36417d'
+                }">
+                <i class="pi pi-sliders-h mr-2"
+                  [ngClass]="{'initial-color': !chambreService.AddOrEditChambreForm.get('airConditioning')!.value}"></i>
+                <span
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('airConditioning')!.value ? '#36417d' : 'white'}">Climatisation</span>
+              </button>
+
+              <!-- Balcony Button -->
+              <button pButton type="button" (click)="toggleBooleanValue('balcony')"
+                [ngClass]="{'active': chambreService.AddOrEditChambreForm.get('balcony')!.value, 'inactive': !chambreService.AddOrEditChambreForm.get('balcony')!.value}"
+                [ngStyle]="{
+                  'background-color': chambreService.AddOrEditChambreForm.get('balcony')!.value ? '#36417d' : 'white',
+                  'color': chambreService.AddOrEditChambreForm.get('balcony')!.value ? 'white' : '#36417d'
+                }">
+                <i class="pi pi-sun mr-2"
+                  [ngClass]="{'initial-color': !chambreService.AddOrEditChambreForm.get('balcony')!.value}"></i>
+                <span
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('balcony')!.value ? '#36417d' : 'white'}">Balcon</span>
+              </button>
+
+              <!-- Kitchenette Button -->
+              <button pButton type="button" (click)="toggleBooleanValue('kitchenette')"
+                [ngClass]="{'active': chambreService.AddOrEditChambreForm.get('kitchenette')!.value, 'inactive': !chambreService.AddOrEditChambreForm.get('kitchenette')!.value}"
+                [ngStyle]="{
+                  'background-color': chambreService.AddOrEditChambreForm.get('kitchenette')!.value ? '#36417d' : 'white',
+                  'color': chambreService.AddOrEditChambreForm.get('kitchenette')!.value ? 'white' : '#36417d'
+                }">
+                <i class="pi pi-shopping-cart mr-2"
+                  [ngClass]="{'initial-color': !chambreService.AddOrEditChambreForm.get('kitchenette')!.value}"></i>
+                <span
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('kitchenette')!.value ? '#36417d' : 'white'}">Kitchenette</span>
+              </button>
+            </div>
+
+            <div class="flex button-wrap gap-3 mt-2">
+              <!-- Workspace Button -->
+              <button pButton type="button" (click)="toggleBooleanValue('workspace')"
+                [class.active]="chambreService.AddOrEditChambreForm.get('workspace')!.value"
+                [class.inactive]="!chambreService.AddOrEditChambreForm.get('workspace')!.value" [ngStyle]="{
+                  'background-color': chambreService.AddOrEditChambreForm.get('workspace')!.value ? '#36417d' : 'white',
+                  'color': chambreService.AddOrEditChambreForm.get('workspace')!.value ? 'white' : '#36417d'
+                }">
+                <i class="pi pi-desktop mr-2"
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('workspace')!.value ? '#36417d' : 'white'}"></i>
+                <span
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('workspace')!.value ? '#36417d' : 'white'}">Espace
+                  de travail</span>
+              </button>
+
+              <!-- Private Bathroom Button -->
+              <button pButton type="button" (click)="toggleBooleanValue('privateBathroom')"
+                [ngClass]="{'active': chambreService.AddOrEditChambreForm.get('privateBathroom')!.value, 'inactive': !chambreService.AddOrEditChambreForm.get('privateBathroom')!.value}"
+                [ngStyle]="{
+                  'background-color': chambreService.AddOrEditChambreForm.get('privateBathroom')!.value ? '#36417d' : 'white',
+                  'color': chambreService.AddOrEditChambreForm.get('privateBathroom')!.value ? 'white' : '#36417d'
+                }">
+                <i class="pi pi-lock mr-2"
+                  [ngClass]="{'initial-color': !chambreService.AddOrEditChambreForm.get('privateBathroom')!.value}"></i>
+                <span
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('privateBathroom')!.value ? '#36417d' : 'white'}">Salle
+                  de bains privée</span>
+              </button>
+
+              <!-- Pet Friendly Button -->
+              <button pButton type="button" (click)="toggleBooleanValue('petFriendly')"
+                [ngClass]="{'active': chambreService.AddOrEditChambreForm.get('petFriendly')!.value, 'inactive': !chambreService.AddOrEditChambreForm.get('petFriendly')!.value}"
+                [ngStyle]="{
+                  'background-color': chambreService.AddOrEditChambreForm.get('petFriendly')!.value ? '#36417d' : 'white',
+                  'color': chambreService.AddOrEditChambreForm.get('petFriendly')!.value ? 'white' : '#36417d'
+                }">
+                <i class="pi pi-heart mr-2"
+                  [ngClass]="{'initial-color': !chambreService.AddOrEditChambreForm.get('petFriendly')!.value}"></i>
+                <span
+                  [ngStyle]="{'color': !chambreService.AddOrEditChambreForm.get('petFriendly')!.value ? '#36417d' : 'white'}">Animaux
+                  acceptés</span>
+              </button>
+            </div>
+
+
+          </div>
+          <div class="col-12">
+            <span class="label required">Type de Chambre </span>
+
+            <div class="flex radiobutton-wrap flex-wrap gap-3">
+              <div class="flex  align-items-center" *ngFor="let option of typeChambreOptions">
+                <p-radioButton name="type" [value]="option.value" formControlName="type"
+                  inputId="{{ option.value }}"></p-radioButton>
+                <label for="{{ option.value }}" class="ml-2">{{ option.label }}</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class=" flex button-wrap gap-3 mt-2">
+              <button *ngIf="!chambreService.AddOrEditChambreForm.value.id" class="primary-button mt-3 col-12"
+                [disabled]="loading || !chambreService.AddOrEditChambreForm.valid || !chambreService.blocForm.value.selectedBloc"
+                (click)="AddChambre()">
+                Enregistrer
+              </button>
+              <button *ngIf="chambreService.AddOrEditChambreForm.value.id " class="primary-button col-12"
+                [disabled]="loading && !chambreService.blocForm.value.selectedBloc" (click)="UpdateChambre()">
+                Enregistrer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

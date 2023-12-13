@@ -1,0 +1,45 @@
+@import "../../../../app/styles/variables.scss";
+
+.p-dialog {
+  width: 800px;
+}
+
+
+
+
+.button-wrap {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.radiobutton-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ng-select .ng-select-container {
+  height: 45px !important;
+}
+
+
+
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: $primary-color;
+  background: $primary-color;
+}
+
+.p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
+  border-color: $primary-color;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+  border-color: $primary-color;
+  background: $primary-color;
+}
+
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem $primary-color-light ;
+  border-color: $primary-color-light;
+}

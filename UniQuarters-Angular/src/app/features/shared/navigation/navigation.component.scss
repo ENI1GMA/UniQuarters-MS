@@ -1,0 +1,86 @@
+@import "../../../styles/variables.scss";
+
+
+.navigation-nav {
+    list-style: none;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 3.65rem);
+    padding: 0.5rem;
+
+    .navigation-nav-item {
+        a {
+            background: linear-gradient(0deg, #33cc99, #33cc99) no-repeat right bottom / 0 var(--bg-h);
+            transition: background-size 350ms;
+            --bg-h: 100%;
+        }
+
+        :where(:hover, :focus-visible) {
+            a {
+                background-size: 100% var(--bg-h);
+                background-position-x: left;
+            }
+        }
+
+        .navigation-link-text {
+
+            text-decoration: none;
+            color: $purple-color;
+        }
+
+        width: 100%;
+        margin-bottom: 1.625rem;
+
+        .navigation-nav-link {
+            display: flex;
+            align-items: center;
+            height: 3rem;
+            color: $base-color;
+            transition: all .3s ease;
+
+            .navigation-link-icon {
+                font-size: 18px;
+                width: 2rem;
+                min-width: 2rem;
+                margin: 0 0.5rem;
+                text-align: center;
+                color: $purple-color;
+
+            }
+
+            .navigation-link-text {
+                margin-left: 0.5rem;
+                white-space: nowrap;
+
+            }
+
+            &.active {
+                background-color: $primary-color !important;
+
+                .navigation-link-icon,
+                .navigation-link-text {
+                    color:$white-color; 
+                }
+            }
+
+            &:hover {
+                .navigation-link-text {
+                    color: $white-color; 
+                }
+            }
+
+        }
+    }
+
+
+
+    .navigation-nav-item:hover {
+        .navigation-nav-link {
+            color: $base-color;
+
+        }
+
+    }
+}

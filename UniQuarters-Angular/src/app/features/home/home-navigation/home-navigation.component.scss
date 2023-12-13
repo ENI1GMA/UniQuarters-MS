@@ -1,0 +1,236 @@
+@import "../../../styles/variables.scss";
+
+h1 {
+  font-weight: 900;
+  color: $purple-color;
+}
+
+.container {
+  align-items: center;
+
+}
+
+.search {
+  max-width: 592px;
+  margin-right: 80px;
+
+  @media only screen and (max-width: $md-screen) {
+    padding: 20px;
+  }
+
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+
+  @media only screen and (max-width: $xxl-screen) {
+    display: none
+  }
+}
+
+.home {
+  &-banner {
+    height: 580px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $light-purple-color;
+
+    .intro {
+      margin-left: 45% !important;
+
+      .into-label {
+        font-size: 36px;
+        color: $base-color;
+        text-transform: uppercase;
+
+        @media only screen and (min-width: $lg-screen) and (max-width: 1199px) {
+          font-size: 28px;
+        }
+
+        @media only screen and (max-width: $md-screen) {
+          font-size: 17px;
+        }
+
+        @media only screen and (max-width: $xs-screen) {
+          font-size: 16px;
+        }
+      }
+
+      @media only screen and (max-width: $lg-screen) {
+        margin-left: 40% !important;
+      }
+
+      @media only screen and (max-width: $md-screen) {
+        margin-left: 20px !important;
+        padding: 0;
+      }
+
+
+
+
+    }
+
+    @media only screen and (max-width: $sm-screen) {
+      height: auto;
+      align-items: center;
+      padding: 30px 0 20px 0;
+    }
+  }
+
+  &-main {
+    padding: 50px 0 50px 0;
+    background-color: white;
+
+    h1 {
+      font-size: $text-4xl;
+      color: $base-color;
+      background-repeat: no-repeat;
+      padding: 20px 0;
+      margin: 0;
+      font-weight: normal;
+    }
+
+    .i-description {
+      text-align: center;
+      font-weight: 900;
+      color: #36417d;
+      font-size: $text-lg;
+    }
+
+
+    .blocs {
+      display: flex;
+      justify-content: center;
+
+      .item {
+        color: white;
+        background-color: $purple-color;
+        text-align: center;
+        padding: 40px 0 !important;
+
+
+      }
+    }
+
+
+  }
+
+  &-map{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly    ;
+    background-color: $light-purple-color;
+
+  }
+
+  &-guide{
+    padding: 50px 0 50px 0;
+    background-color: $purple-color;
+
+
+    .blocs {
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+
+      .item {
+        color: rgb(0, 0, 0);
+        background-color: #ffffff;
+        height: 170px;
+
+
+      }
+    }
+
+  }
+}
+
+
+.navbar {
+  top: 0;
+  position: sticky;
+  justify-content: space-between;
+  z-index: 1001;
+  background-color: white;
+  box-shadow: 0 11px 12px -14px rgba(0, 0, 0, .2);
+  &-logo-img {
+    height: 69px;
+}
+}
+
+.p-inputtext {
+  margin: 0;
+  width: 22rem;
+  background-color: #33cc99;
+  font-size: 16px;
+  font-weight: 600;
+  color: white !important;
+
+}
+
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #33cc9987;
+  border-color: #33cc99;
+}
+
+.p-inputtext:enabled:hover {
+  outline: 0 none;
+  outline-offset: 0;
+  border-color: #33cc99;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ffffff;
+}
+
+.p-input-icon-left>i:first-of-type {
+  left: 0.75rem;
+  color: #ffffff;
+}
+
+
+
+.button-link {
+  text-decoration: none;
+  margin: 0 12px;
+  text-transform: uppercase;
+
+  color: $base-color;
+  font-size: $text-sm;
+  border-bottom: 2px solid transparent;
+  @media only screen and (max-width: $md-screen) {
+      margin: 0px 10px;
+      font-size: 15px;
+  }
+
+  &:hover {
+      border-bottom: 3px solid #33cc99;
+  }
+  &-active {
+      border-bottom: 3px solid #33cc99;
+  }
+
+}
+
+a {
+  background: linear-gradient(0deg, #33cc99, #33cc99) no-repeat right bottom / 0 var(--bg-h);
+  transition: background-size 350ms;
+  --bg-h: 100%;
+}
+
+.item:where(:hover, :focus-visible) {
+  a {
+    background-size: 100% var(--bg-h);
+    background-position-x: left;
+  }
+}
+
+.location:hover {
+  fill: #efefef;
+}

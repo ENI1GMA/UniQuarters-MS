@@ -1,0 +1,17 @@
+
+<div class="home">
+    <h2 class="title py-4">Universite Par Région : {{address}}</h2>
+    <div style="margin:20px 600px ">
+    <span class="p-input-icon-right">
+        <i class="pi pi-search"></i>
+        <input  pInputText type="text" class="p-column-filter" #search (input)="onSearch(search.value)"placeholder="Search">
+      </span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6" *ngFor="let uni of universities">
+                <app-universite-details (showUniv)="showLocation($event)" [uni]="uni"></app-universite-details>
+            </div>
+        </div>
+    </div>
+</div>

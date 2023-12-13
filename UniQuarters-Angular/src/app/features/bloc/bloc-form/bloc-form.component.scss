@@ -1,0 +1,27 @@
+@import "src/app/styles/variables.scss";
+/*------ color input styling  ------*/
+.style1 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .style1::-webkit-color-swatch {
+    border-radius: 9px;
+    border: none;
+  }
+  .style1::-moz-color-swatch {
+    border-radius: 15px;
+    border: none;
+  }
+
+/*------ add button styling  ------*/
+.addButton{
+    width: 100% !important;
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+}
