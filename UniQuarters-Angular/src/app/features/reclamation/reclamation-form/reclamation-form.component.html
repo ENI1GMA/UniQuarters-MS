@@ -1,0 +1,34 @@
+<div class="application mt-5">
+    <form #f="ngForm" (ngSubmit)="submit(f)" class="form">
+        <div class="grid">
+            <div class="col-12">
+                <label class="label required mt-2">Title </label>
+                <input id="title" name="title" required #title="ngModel" [(ngModel)]="reclamationToSubmit.title"
+                    type="text" class="inputtext-sm full-width" pInputText />
+                <div *ngIf="title.dirty && title.errors?.['required']" class="invalid-feedback">
+                    Ce champ est obligatoire
+                </div>
+            </div>
+            <div class="col-12">
+                <label class="label required mt-2">Description</label>
+                <input class="inputtext-sm full-width" id="description" required
+                    minlength="8" name="description" #description="ngModel" [(ngModel)]="reclamationToSubmit.description"
+                    type="text" pInputText />
+                <div *ngIf="description.dirty && description.errors?.['required']" class="invalid-feedback">
+                    Ce champ est obligatoire
+                </div>
+            </div>
+            <div class="col-12">
+                <label class="label required mt-2">Status</label>
+                <p-dropdown [options]="statusList" name="status" [(ngModel)]="reclamationToSubmit.status" #status="ngModel" [showClear]="true"
+                    placeholder="Choisir l'etat"></p-dropdown>
+                <div *ngIf="status.dirty && status.errors?.['required']" class="invalid-feedback">
+                    Ce champ est obligatoire
+                </div>
+            </div>
+        </div>
+        <div class="footer-popup mt-4">
+            <input type="submit" class="primary-button" value="Confirmer" [disabled]="f.invalid" />
+        </div>
+    </form>
+</div>

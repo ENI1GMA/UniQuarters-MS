@@ -37,6 +37,11 @@ export const navbarData = [
     routeLink: `/${RoutePaths.GESTION}/${RoutePaths.USER}`,
   },
   {
+    icon: 'pi pi-file',
+    label: 'Reclamations',
+    routeLink: `/${RoutePaths.GESTION}/${RoutePaths.USER}`,
+  },
+  {
     icon: 'pi pi-map',
     label: 'Universités',
     routeLink: `/${RoutePaths.GESTION}/${RoutePaths.UNIVERSITE}`,

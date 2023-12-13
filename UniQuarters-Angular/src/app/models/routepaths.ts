@@ -12,4 +12,5 @@ export enum RoutePaths{
     PASSWORD='password-reset',
     BLOC='bloc',
     SCHEDULER='scheduler',
+    RECLAMATION='reclamation',
 }

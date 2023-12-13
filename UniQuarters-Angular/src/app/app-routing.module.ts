@@ -14,6 +14,7 @@ import { PasswordResetModule } from './features/password-reset/password-reset.mo
 import { SchedulerComponent } from './features/bloc/scheduler/scheduler.component';
 
 import { ListUniversiteFilteredComponent } from './features/universite/list-universite-filtered/list-universite-filtered.component';
+import { ReclamationModule } from './features/reclamation/reclamation.module';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: `${RoutePaths.USER}`,
         loadChildren: () => UtilisateurModule,
+      },
+      {
+        path: `${RoutePaths.RECLAMATION}`,
+        loadChildren: () => ReclamationModule
       },
       {
         path: `${RoutePaths.UNIVERSITE}`,

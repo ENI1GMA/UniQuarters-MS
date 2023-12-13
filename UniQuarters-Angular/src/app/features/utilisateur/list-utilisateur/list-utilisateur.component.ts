@@ -25,7 +25,6 @@ export class ListUtilisateurComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private dialogService: DialogService,
-    private passwordResetService: PasswordResetService
   ) { }
   ngOnInit(): void {
     this.getData();
@@ -33,30 +32,20 @@ export class ListUtilisateurComponent implements OnInit {
   }
 
   getData() {
-    this.userService.getUsersByRole(Role.Admin).subscribe(
-      response => this.usersList = response.body.data.users
+    this.userService.getUsers().subscribe(
+      (      response: { body: User[]; }) => this.usersList = response.body
     );
   }
 
-  Add() { this.dialogService.open(UtilisateurFormComponent, { header: "Ajouter un administrateur" }) }
-  Edit(id: number) { this.dialogService.open(UtilisateurFormComponent, { header: "Modifier les informations d'uilisateur", data: { id } }) }
-  Delete(id: number) {
+  Add() { this.dialogService.open(UtilisateurFormComponent, { header: "Ajouter un utilisateur" }) }
+  Edit(id: string) { this.dialogService.open(UtilisateurFormComponent, { header: "Modifier les informations d'uilisateur", data: { id } }) }
+  Delete(id: string) {
     this.confirmationService.confirm({
       message: "Êtes-vous sûr de vouloir effectuer cette action ?",
       acceptLabel: 'Supprimer',
       rejectLabel: 'Annuler',
       accept: () => {
         this.userService.deleteUser(id).subscribe()
-      }
-    })
-  }
-  Reset(email:string){
-    this.confirmationService.confirm({
-      message: "Voulez vous envoyer un email de reinitialisation de mot de passe ?",
-      acceptLabel: 'Envoyer',
-      rejectLabel: 'Annuler',
-      accept: () => {
-        this.passwordResetService.requestPasswordReset(email).subscribe();
       }
     })
   }
