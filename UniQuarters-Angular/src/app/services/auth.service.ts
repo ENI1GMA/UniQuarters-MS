@@ -60,7 +60,7 @@ export class AuthService {
   refreshToken(refreshToken: string): Observable<any> {
     let body = new URLSearchParams();
     body.append('client_id', 'enigma-rest-api');
-    body.append('grant-type', 'refresh_token');
+    body.append('grant_type', 'refresh_token');
     body.append('refresh_token', refreshToken);
     let headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
