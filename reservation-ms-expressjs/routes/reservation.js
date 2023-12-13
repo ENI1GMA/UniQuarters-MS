@@ -1,7 +1,7 @@
 // Reservation Router
 const express = require('express');
 const router = express.Router();
-const ReservationController = require('../controllers/reservation');
+const ReservationController = require('../controllers/reservation.js');
 
 router.get('/', ReservationController.getAllReservations);
 router.get('/:id', ReservationController.getReservation);

@@ -5,6 +5,15 @@ services:
     restart: always
     ports:
       - "27999:27017"
+  Eureka:
+    container_name: eureka
+    build: .\eurekaDiscov
+    hostname: serviceregistry
+    ports:
+      - "8761:8761"
+    image: "eureka"
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
   Reservation:
     container_name: Reservation
     build: .\reservation-ms-expressjs
@@ -13,8 +22,12 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/reservation
       - EUREKA_CLIENT_HOST=serviceregistry
+      - EUREKA_IP_ADDRESS=172.19.0.3
     image: "reservation-ms-expressjs"
-    restart: unless-stopped
+    restart: always
+    depends_on:
+      - Eureka
+      - mongo
   # db-mysql:
   #   image: "mysql:5.6"
   #   container_name: db-mysql
@@ -124,13 +137,3 @@ services:
     #   - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
     # image: "reclamation-ms"
     # restart: unless-stopped
-  Eureka:
-    container_name: eureka
-    build: .\eurekaDiscov
-    hostname: serviceregistry
-    ports:
-      - "8761:8761"
-    image: "eureka"
-
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/

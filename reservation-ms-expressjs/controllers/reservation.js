@@ -1,4 +1,4 @@
-const ReservationService = require('../services/reservation');
+const ReservationService = require('../services/reservation.js');
 module.exports = class ReservationController {
   // static #reservationService = new ReservationService();
   static async getAllReservations(req, res) {

@@ -6,7 +6,7 @@ const eurekaConfig = {
   instance: {
     app: 'RESERVATION-SERVICE-EXPRESSJS', // Replace with your service name
     hostName: process.env.EUREKA_CLIENT_HOST,
-    ipAddr: '127.0.0.1', // for check
+    ipAddr: process.env.EUREKA_IP_ADDRESS, // for check
     statusPageUrl: `http://${process.env.EUREKA_CLIENT_HOST}:${process.env.PORT}/info`,
     port: {
       $: process.env.PORT,
@@ -22,6 +22,8 @@ const eurekaConfig = {
     host: process.env.EUREKA_CLIENT_HOST,
     port: 8761,
     servicePath: '/eureka/apps/',
+    maxRetries: 100,
+    requestRetryDelay: 10000,
   },
 };
 

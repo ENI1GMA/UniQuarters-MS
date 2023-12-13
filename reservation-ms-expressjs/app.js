@@ -5,8 +5,8 @@ dotenv.config();
 const morgan = require('morgan');
 const cors = require('cors');
 require('./config/MongoDB')();
-const reservationRoutes = require('./routes/reservation');
-const eurekaClient = require('./config/eurekaClient');
+const reservationRoutes = require('./routes/reservation.js');
+const eurekaClient = require('./config/eurekaClient.js');
 
 class Server {
   constructor() {

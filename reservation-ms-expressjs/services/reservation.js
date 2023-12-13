@@ -1,7 +1,7 @@
 // Reservation Service
-const ReservationModel = require('../models/reservation');
-const ChambreService = require('./chambre');
-const UserService = require('./user');
+const ReservationModel = require('../models/Reservation.js');
+const ChambreService = require('./chambre.js');
+const UserService = require('./user.js');
 module.exports = class ReservationService {
   static async getAllReservations() {
     try {

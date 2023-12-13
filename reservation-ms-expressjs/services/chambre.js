@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { sendRequestToService } = require('./eureka');
+const { sendRequestToService } = require('./eureka.js');
 module.exports = class ChambreService {
   static async getChambre(id) {
     if (!id) throw new Error('id is required');

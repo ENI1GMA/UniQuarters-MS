@@ -1,6 +1,6 @@
 // eureka service
 const axios = require('axios');
-const eurekaClient = require('../config/eurekaClient');
+const eurekaClient = require('../config/eurekaClient.js');
 
 async function sendRequestToService(serviceName, endpoint, method = 'get', data = null) {
   try {
