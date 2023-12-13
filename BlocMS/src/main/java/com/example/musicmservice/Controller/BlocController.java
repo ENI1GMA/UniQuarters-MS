@@ -104,25 +104,30 @@ public class BlocController {
             if (foundBloc == null) {
                 throw new RuntimeException("Bloc not found");
             }
-            String foyerUrl = "http://FOYER-SERVICE/foyers/" + foundBloc.getFoyerId();
-            ApiResponse apiResponseUni = template.getForObject(foyerUrl, ApiResponse.class);
-            HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("foyer");
-            Foyer foyer = Foyer.builder()
-                    .id(((Integer) data.get("id")).longValue())
-                    .nom((String) data.get("nom"))
-                    //.capacite((Long) data.get("capacite"))
-                    //.lng((Double) data.get("lng"))
-                    //.lat((Double) data.get("lat"))
-                    .build();
-            foundBloc.setFoyer(foyer);
+            if (foundBloc.getFoyerId() == null) {
+                apiResponse.setResponse(HttpStatus.OK, "Bloc retrieved");
+                apiResponse.addData("bloc", foundBloc);
+            }else{
+                String foyerUrl = "http://FOYER-SERVICE/foyers/" + foundBloc.getFoyerId();
+                ApiResponse apiResponseUni = template.getForObject(foyerUrl, ApiResponse.class);
+                HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("foyer");
+                Foyer foyer = Foyer.builder()
+                        .id(((Integer) data.get("id")).longValue())
+                        .nom((String) data.get("nom"))
+                        //.capacite((Long) data.get("capacite"))
+                        //.lng((Double) data.get("lng"))
+                        //.lat((Double) data.get("lat"))
+                        .build();
+                foundBloc.setFoyer(foyer);
 
-            apiResponse.setResponse(HttpStatus.OK, "Bloc retrieved");
-            apiResponse.addData("bloc", foundBloc);
+                apiResponse.setResponse(HttpStatus.OK, "Bloc retrieved");
+                apiResponse.addData("bloc", foundBloc);}
         } catch (Exception e) {
             apiResponse.setResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
     }
+
 
     @DeleteMapping("/{idBloc}")
     public ResponseEntity<ApiResponse> removeBloc(@PathVariable long idBloc) {
