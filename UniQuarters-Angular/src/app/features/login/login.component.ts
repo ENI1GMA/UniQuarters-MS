@@ -9,7 +9,7 @@ import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
@@ -20,18 +20,16 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private tokenService: TokenService,
     private router: Router
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.authService.logout();
     this.loginForm = this.formBuilder.group(
       {
-        username: ["", Validators.required],
-        password: ["", Validators.required],
+        username: ['', Validators.required],
+        password: ['', Validators.required],
       },
-      { updateOn: "submit" }
+      { updateOn: 'submit' }
     );
   }
 
@@ -46,34 +44,37 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           this.tokenService.setAccessToken(response.access_token);
           this.tokenService.setRefreshToken(response.refresh_token);
+          this.authService.getLoggedInUser().subscribe((response) => {
+            sessionStorage.setItem('userId', response.sub);
+            sessionStorage.setItem('username', response.preferred_username);
+          });
           // this.authService.setRole(response.role);
           // if(response.role == Role.Admin)
-          this.router.navigate(["/gestion/dashboard"]);
+          this.router.navigate(['/gestion/dashboard']);
           // if(response.role == Role.Etudiant)
           // this.router.navigate(["/loggedIn/home"]);
         },
         error: (error) => {
           this.errorMsgs.push({
-            severity: "error",
-            detail: "Username ou mot de passe incorrecte",
+            severity: 'error',
+            detail: 'Username ou mot de passe incorrecte',
           });
-        }
-      }
-      );
+        },
+      });
     }
   }
 
   showValidationMsgs() {
-    if (this.loginForm.controls['username'].hasError("required")) {
+    if (this.loginForm.controls['username'].hasError('required')) {
       this.errorMsgs.push({
-        severity: "error",
-        detail: "Veuillez saisir votre identifiant.",
+        severity: 'error',
+        detail: 'Veuillez saisir votre identifiant.',
       });
     }
-    if (this.loginForm.controls['password'].hasError("required")) {
+    if (this.loginForm.controls['password'].hasError('required')) {
       this.errorMsgs.push({
-        severity: "error",
-        detail: "Veuillez saisir votre mot de passe.",
+        severity: 'error',
+        detail: 'Veuillez saisir votre mot de passe.',
       });
     }
   }
