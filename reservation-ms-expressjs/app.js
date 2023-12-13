@@ -28,7 +28,7 @@ class Server {
   initializeRoutes() {
     this.app.use('/reservations', reservationRoutes);
     this.app.use((req, res) => {
-      res.status(404).json({ status: 'error', message: 'Route Not found', api: 'content.boosterbc.com' });
+      res.status(404).json({ status: 'error', message: 'Route Not found', api: 'reservation-ms' });
     });
   }
 
