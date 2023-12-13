@@ -4,6 +4,7 @@ export enum RoutePaths{
     LOGIN='login',
     REGISTER='register',
     UNIVERSITE='universite',
+    FOYER='foyer',
     CHAMBRE='chambre',
     RESERVATION='reservation',
     GESTION='gestion',

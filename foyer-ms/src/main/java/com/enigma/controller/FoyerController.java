@@ -33,17 +33,18 @@ public class FoyerController {
                 String stringResponse = template.getForObject(universiteUrl, String.class);
                 System.out.println("stringResponse: " + stringResponse);
                 ApiResponse apiResponseUni = template.getForObject(universiteUrl, ApiResponse.class);
-                System.out.println("apiResponseUni: " + apiResponseUni.getData());
-                HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("university");
-                System.out.println("data: " + data);
-                Universite universite = new Universite(
-                        ((Integer) data.get("id")).longValue(),
-                        (String) data.get("nom"),
-                        (String) data.get("adresse"),
-                        (String) data.get("image")
-                );
-                System.out.println("universite: " + universite);
-                foyer.setUniversite(universite);
+                if (apiResponseUni.getData() != null) {
+                    HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("university");
+                    if (data != null) {
+                        // Process the data
+                        Universite universite = new Universite(
+                                ((Integer) data.get("id")).longValue(),
+                                (String) data.get("nom"),
+                                (String) data.get("adresse"), null
+                        );
+                        foyer.setUniversite(universite);
+                    }
+                }
             });
             apiResponse.setResponse(HttpStatus.OK, "Foyers retrieved successfully.");
             apiResponse.addData("foyers", foyers);
@@ -140,6 +141,40 @@ public class FoyerController {
             }
         } catch (Exception e) {
             apiResponse.setResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
+    }
+    @GetMapping("/nom/{nom}")
+    public ResponseEntity<ApiResponse> getFoyersByNom(@PathVariable String nom) {
+        ApiResponse apiResponse = new ApiResponse();
+        try {
+            List<Foyer> foyers = foyerRepo.searchFoyers(nom);
+            foyers.forEach(foyer -> {
+                if (foyer.getIdUniversite() == null) {
+                    return;
+                }
+                String universiteUrl = "http://UNIVERSITE-SERVICE/universities/" + foyer.getIdUniversite();
+                String stringResponse = template.getForObject(universiteUrl, String.class);
+                System.out.println("stringResponse: " + stringResponse);
+                ApiResponse apiResponseUni = template.getForObject(universiteUrl, ApiResponse.class);
+                if (apiResponseUni.getData() != null) {
+                    HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("university");
+                    if (data != null) {
+                        // Process the data
+                        Universite universite = new Universite(
+                                ((Integer) data.get("id")).longValue(),
+                                (String) data.get("nom"),
+                                (String) data.get("adresse"), null
+                        );
+                        foyer.setUniversite(universite);
+                    }
+                }
+            });
+            apiResponse.setResponse(HttpStatus.OK, "Foyers retrieved successfully.");
+            apiResponse.addData("foyers", foyers);
+
+        } catch (Exception e) {
+            apiResponse.setResponse(org.springframework.http.HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
     }
