@@ -113,4 +113,19 @@ module.exports = class ReservationController {
       res.status(500).json({ status: 'error', message: error.message });
     }
   }
+
+  static async getChambresReservationsStatistiques(req, res) {
+    try {
+      const chambresReservationsStatistiques = await ReservationService.getChambresReservationsStatistiques();
+      res.status(200).json({
+        status: 'success',
+        message: 'Get chambres reservations statistiques',
+        data: {
+          chambresReservations: chambresReservationsStatistiques,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({ status: 'error', message: error.message });
+    }
+  }
 };

@@ -6,4 +6,9 @@ module.exports = class ChambreService {
     const response = await sendRequestToService('CHAMBRE-SERVICE', `/chambres/${id}`);
     return response.data.data.chambre;
   }
+
+  static async getAllChambres() {
+    const response = await sendRequestToService('CHAMBRE-SERVICE', '/chambres');
+    return response.data.data.chambres;
+  }
 };

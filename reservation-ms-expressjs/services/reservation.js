@@ -192,6 +192,32 @@ module.exports = class ReservationService {
     return result;
   }
 
+  static async getChambresReservationsStatistiques() {
+    // loops through all chambres from Service Chambre and for each chambre get freePlaces, maxPlaces, reservationsCount, reservationsIds and chambre object
+    const chambres = await ChambreService.getAllChambres();
+    console.log('chambres', chambres);
+    const chambresReservationsStatistiques = [];
+    for (const chambre of chambres) {
+      const maxPlaces = this.#getChambreMaxPlaces(chambre.type);
+      const reservationsChambreValid = await ReservationModel.find({
+        'chambre.id': chambre.id,
+        estValide: true,
+      });
+      const reservationsCount = reservationsChambreValid.length;
+      const reservationsIds = reservationsChambreValid.map(reservation => reservation.id);
+      const freePlaces = maxPlaces - reservationsCount;
+      chambresReservationsStatistiques.push({
+        chambre,
+        freePlaces,
+        maxPlaces,
+        reservationsCount,
+        reservationsIds,
+      });
+    }
+    console.log('chambresReservationsStatistiques', chambresReservationsStatistiques);
+    return chambresReservationsStatistiques;
+  }
+
   static #generateId(idChambre, idEtudiant) {
     return idChambre + '_' + idEtudiant;
   }
