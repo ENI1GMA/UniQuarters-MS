@@ -5,8 +5,9 @@ dotenv.config();
 const morgan = require('morgan');
 const cors = require('cors');
 require('./config/MongoDB')();
+const reservationRoutes = require('./routes/reservation.js');
+const eurekaClient = require('./config/eurekaClient.js');
 
-const ReservationModel = require('./models/Reservation');
 class Server {
   constructor() {
     this.app = express();
@@ -25,15 +26,15 @@ class Server {
   }
 
   initializeRoutes() {
-    // this.app.use('/hotel', authentification, hotelRoutes);
-
+    this.app.use('/reservations', reservationRoutes);
     this.app.use((req, res) => {
-      res.status(404).json({ status: 'error', message: 'Route Not found', api: 'content.boosterbc.com' });
+      res.status(404).json({ status: 'error', message: 'Route Not found', api: 'reservation-ms' });
     });
   }
 
   async start() {
     try {
+      eurekaClient.start();
       this.app.listen(process.env.PORT, () => {
         console.log(`Server is listening on port ${process.env.PORT}`);
       });

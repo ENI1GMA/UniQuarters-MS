@@ -24,4 +24,7 @@ public class Chambre {
     @Enumerated(EnumType.STRING)
     private TypeChambre type;
 
+    @Transient
+    private Bloc bloc;
+
 }

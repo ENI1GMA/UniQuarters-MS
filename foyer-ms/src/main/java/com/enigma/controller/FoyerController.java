@@ -19,6 +19,7 @@ import java.util.List;
 public class FoyerController {
     private final FoyerRepo foyerRepo;
     private RestTemplate template;
+
     @GetMapping("")
     public ResponseEntity<ApiResponse> getAllFoyers() {
         ApiResponse apiResponse = new ApiResponse();
@@ -51,6 +52,7 @@ public class FoyerController {
         }
         return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
     }
+
     @GetMapping("/{idFoyer}")
     public ResponseEntity<ApiResponse> getFoyer(@PathVariable long idFoyer) {
         ApiResponse apiResponse = new ApiResponse();
@@ -67,21 +69,19 @@ public class FoyerController {
         }
         return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
     }
+
     @PostMapping("")
-    public ResponseEntity<ApiResponse>  addFoyer(@RequestBody Foyer foyer) {
+    public ResponseEntity<ApiResponse> addFoyer(@RequestBody Foyer foyer) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-
-             apiResponse.setResponse(org.springframework.http.HttpStatus.CREATED, "Foyer added");
-
+            apiResponse.setResponse(org.springframework.http.HttpStatus.CREATED, "Foyer added");
             apiResponse.addData("foyer", foyerRepo.save(foyer));
         } catch (Exception e) {
             apiResponse.setResponse(org.springframework.http.HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
-
-
     }
+
     @PutMapping("/{idFoyer}")
     public ResponseEntity<ApiResponse> updateFoyer(@RequestBody Foyer foyer, @PathVariable long idFoyer) {
         ApiResponse apiResponse = new ApiResponse();
@@ -127,9 +127,21 @@ public class FoyerController {
     }
 
 
-    @DeleteMapping  ("/{idFoyer}")
-    public void delete(@PathVariable long idFoyer) {
-         foyerRepo.deleteById(idFoyer);
+    @DeleteMapping("/{idFoyer}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable long idFoyer) {
+        ApiResponse apiResponse = new ApiResponse();
+        try {
+            Foyer foundFoyer = foyerRepo.findById(idFoyer).orElse(null);
+            if (foundFoyer == null) {
+                apiResponse.setResponse(HttpStatus.NOT_FOUND, "Foyer not found.");
+            } else {
+                foyerRepo.delete(foundFoyer);
+                apiResponse.setResponse(HttpStatus.OK, "Foyer deleted successfully.");
+            }
+        } catch (Exception e) {
+            apiResponse.setResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return new ResponseEntity<>(apiResponse, apiResponse._getHttpStatus());
     }
 
 

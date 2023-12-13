@@ -1,0 +1,39 @@
+<div class="application mt-5">
+    <form #f="ngForm" (ngSubmit)="submit(f)" class="form">
+        <div class="grid">
+            <div class="col-12">
+                <label class="label required mt-2">Email </label>
+                <input id="email" name="email" required #email="ngModel" [(ngModel)]="userToSubmit.email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="text" class="inputtext-sm full-width"
+                    pInputText />
+                <div *ngIf="email.dirty && email.errors?.['required']" class="invalid-feedback">
+                    L'email est obligatoire
+                </div>
+                <div *ngIf="email.dirty && email.errors?.['pattern']" class="invalid-feedback">
+                    L'email n'est pas valide
+                </div>
+                <div *ngIf="mailExists" class="invalid-feedback">
+                    L'email est déja utilisé
+                </div>
+            </div>
+            <div class="col-12">
+                <label class="label required mt-2">Mot de passe</label>
+                <input [disabled]="id!=undefined" class="inputtext-sm full-width" id="password" required minlength="8" name="passowrd" #password="ngModel"
+                    [(ngModel)]="userToSubmit.password" type="password" pInputText />
+                <div *ngIf="password.dirty && password.errors?.['required']" class="invalid-feedback">
+                    Le mot de passe est obligatoire
+                </div>
+                <div *ngIf="password.dirty && password.errors?.['minlength']" class="invalid-feedback">
+                    Le mot de passe doit contenir au moins 8 caractéres
+                </div>
+            </div>
+            <div class="col-12">
+                <p-selectButton name="enabled" [options]="stateOptions" [(ngModel)]="userToSubmit.enabled" optionLabel="label" optionValue="value"></p-selectButton>
+            </div>
+           
+        </div>
+        <div class="footer-popup mt-4">
+            <input type="submit" class="primary-button" value="Confirmer" [disabled]="f.invalid">
+        </div>
+    </form>
+</div>

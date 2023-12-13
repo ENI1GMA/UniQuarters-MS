@@ -1,0 +1,33 @@
+<!-- reservation-table.component.html -->
+<div class="container">
+  <h2 class="title py-4">Réservations Etudiant</h2>
+  <p-progressBar
+    *ngIf="isLoading"
+    mode="indeterminate"
+    [style]="{ height: '6px' }"
+  ></p-progressBar>
+  <div class="card p-4">
+    <p-table [value]="reservations">
+      <ng-template pTemplate="headergrouped">
+        <tr class="bg-white">
+          <th>ID Reservation</th>
+          <th>Year</th>
+          <th>Valid</th>
+          <th>Bloc</th>
+          <th>Room Number</th>
+          <th>Room Type</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-reservation>
+        <tr>
+          <td>{{ reservation.idReservation }}</td>
+          <td>{{ reservation.anneeUniversitaire }}</td>
+          <td>{{ reservation.estValide ? "Yes" : "No" }}</td>
+          <td>{{ reservation.chambre.bloc.nom }}</td>
+          <td>{{ reservation.chambre.numero }}</td>
+          <td>{{ reservation.chambre.type }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

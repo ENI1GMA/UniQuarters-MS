@@ -1,0 +1,18 @@
+<p-toast></p-toast>
+
+<div class="container">
+  <h2 class="title py-4">Statistiques des réservations des chambres</h2>
+  <p-progressBar
+    *ngIf="isLoading"
+    mode="indeterminate"
+    [style]="{ height: '6px' }"
+  ></p-progressBar>
+  <p-chart
+    *ngIf="isSuccess"
+    type="pie"
+    width="500"
+    height="500"
+    [data]="data"
+    [options]="options"
+  ></p-chart>
+</div>

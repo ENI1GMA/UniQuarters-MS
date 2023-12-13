@@ -1,0 +1,40 @@
+<p-dialog
+  [(visible)]="reservation"
+  header="Reservation Details"
+  showEffect="fade"
+  [modal]="true"
+>
+  <div *ngIf="reservation">
+    <strong>ID:</strong> {{ reservation?.id }}<br />
+    <strong>Academic Year:</strong> {{ reservation?.anneeUniversitaire }}<br />
+    <strong>Valid:</strong> {{ reservation?.estValide ? "Yes" : "No" }}<br />
+
+    <h3>Student:</h3>
+    <div *ngIf="reservation?.etudiants?.length > 0">
+      <div *ngFor="let student of reservation?.etudiants">
+        <strong>Name:</strong> {{ student.nom }} {{ student.prenom }}<br />
+        <strong>ID:</strong> {{ student.id }}<br />
+        <strong>Cin:</strong> {{ student.cin }}<br />
+        <strong>School:</strong> {{ student.ecole }}<br />
+        <strong>Date of Birth:</strong> {{ student.dateNaissance }}<br />
+      </div>
+    </div>
+    <p *ngIf="reservation?.etudiants?.length === 0 || !reservation?.etudiants">
+      <strong>No student</strong>
+    </p>
+    <h3>Room:</h3>
+    <div *ngIf="reservation?.chambre">
+      <strong>Number:</strong> {{ reservation?.chambre.numero }}<br />
+      <strong>Type:</strong> {{ reservation?.chambre?.type }}<br />
+      <div *ngIf="reservation?.chambre?.bloc">
+        <h4>Bloc</h4>
+        <strong>Name:</strong> {{ reservation?.chambre?.bloc.nom }}<br />
+        <strong>Capacity:</strong> {{ reservation?.chambre?.bloc?.capacite
+        }}<br />
+        <strong>Foyer:</strong> {{ reservation?.chambre?.bloc?.foyer }}<br />
+      </div>
+      <p *ngIf="!reservation?.chambre?.bloc"><strong>No bloc</strong></p>
+    </div>
+    <p *ngIf="!reservation?.chambre"><strong>No room</strong></p>
+  </div>
+</p-dialog>

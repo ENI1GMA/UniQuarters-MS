@@ -1,0 +1,98 @@
+<p-toast position="bottom-center" key="bc"></p-toast>
+<div class="container card">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <div class="formgrid grid p-fluid">
+            <h2 class="title py-4">Inscription</h2>
+            <div class="field col-12">
+                <div *ngIf="mailExists" class="invalid-feedback">
+                    Votre email est déja utilisé dans un autre compte
+                </div>
+                <label for="email">Email</label>
+                <input pInputText id="email" formControlName="email" />
+                <ng-container *ngFor="let validation of validation_messages.email">
+                    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label for="password">Password</label>
+                <p-password id="password" formControlName="password"></p-password>
+                <ng-container *ngFor="let validation of validation_messages.password">
+                    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label for="password-confirm">Confirmer le password</label>
+                <p-password [feedback]="false" id="password-confirm" aria-describedby="password-help"
+                    formControlName="confirmPassword"></p-password>
+                <div class="invalid-feedback"
+                    *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+                    Le mot de passe doit être le même
+                </div>
+                <ng-container *ngFor="let validation of validation_messages.confirmPassword">
+                    <div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label for="nom">Nom</label>
+                <input pInputText id="nom" formControlName="nom" />
+                <ng-container *ngFor="let validation of validation_messages.nom">
+                    <div *ngIf="registerForm.get('nom')?.touched && registerForm.get('nom')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-6">
+                <label for="prenom">Prenom</label>
+                <input pInputText id="prenom" formControlName="prenom" />
+                <ng-container *ngFor="let validation of validation_messages.prenom">
+                    <div *ngIf="registerForm.get('prenom')?.touched && registerForm.get('prenom')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-12">
+                <label for="cin">CIN</label>
+                <input pInputText id="cin" formControlName="cin" pKeyFilter="int" [maxLength]="8" />
+                <ng-container *ngFor="let validation of validation_messages.cin">
+                    <div *ngIf="registerForm.get('cin')?.touched && registerForm.get('cin')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-12">
+                <label for="ecole">Ecole</label>
+                <input pInputText id="ecole" formControlName="ecole" />
+                <ng-container *ngFor="let validation of validation_messages.ecole">
+                    <div *ngIf="registerForm.get('ecole')?.touched && registerForm.get('ecole')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="field col-12">
+                <label for="date-naissance">Date de naissance</label>
+                <p-calendar [maxDate]="today" [touchUI]="true" id="date-naissance"
+                    formControlName="dateNaissance"></p-calendar>
+                <ng-container *ngFor="let validation of validation_messages.dateNaissance">
+                    <div *ngIf="registerForm.get('dateNaissance')?.touched && registerForm.get('dateNaissance')?.hasError(validation.type)"
+                        class="invalid-feedback">
+                        {{validation.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <button class="primary-button" type="submit" [disabled]="registerForm.invalid">Envoyer</button>
+        </div>
+    </form>
+</div>

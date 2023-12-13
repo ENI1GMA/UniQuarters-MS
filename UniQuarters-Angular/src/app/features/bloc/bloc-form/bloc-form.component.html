@@ -1,0 +1,49 @@
+<div class="application mt-5">
+  <form #f="ngForm" (ngSubmit)="add(f)" class="form">
+
+    <div class="grid">
+      <div class="col-12">
+        <label class="label required my-2" >Nom</label>
+        <input id="name" name="nom" required minlength="2" #nom="ngModel"
+               [(ngModel)]="bl.nom" type="text" class="inputtext-sm full-width"
+               placeholder="Saisir le nom" pInputText />
+        <div *ngIf="nom.dirty && nom.errors?.['required']" class="invalid-feedback" >
+          Le nom est obligatoire !
+        </div>
+        <div *ngIf="nom.dirty && nom.errors?.['minlength']" class="invalid-feedback">
+          Le nom doit contenir 3 caractères minimum
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label class="label required my-2">Capacite</label>
+        <input id="otherProperty" required  #capacite="ngModel" name="adresse" [(ngModel)]="bl.capacite" type="number" class="inputtext-sm full-width"
+               placeholder="Saisir Capacité" pInputText />
+        <div *ngIf="capacite.dirty && capacite.errors?.['required']" class="invalid-feedback">
+          La capacite est obligatoire !
+        </div>
+
+      
+
+      </div>
+      <div class="col-12">
+        <label class="label required mt-2">Foyer</label>
+        <select name="selectedFoyerId" [(ngModel)]="selectedFoyerId" class="inputtext-sm full-width" pInputText>
+          <option *ngFor="let foyer of foyers" [value]="foyer.id">{{ foyer.nom }}</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label class="label required mt-2" for="color">Color:</label> <br>
+        <input class="style1" type="color" id="color" ngModel #color="ngModel" name="color" [(ngModel)]="bl.color"  required/>
+        <div *ngIf="color.dirty && color.errors?.['required']" class="invalid-feedback" >
+          Veuillez choisir une couleur
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-popup mt-4">
+      <input type="submit" class="primary-button addButton"  [value]="id!==undefined? 'Mettre à jour' : 'Créer'" [disabled]="f.invalid">
+
+    </div>
+  </form>
+</div>
