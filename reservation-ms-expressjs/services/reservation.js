@@ -88,6 +88,16 @@ module.exports = class ReservationService {
         throw new Error(`Reservation ${idReservation} already validated`);
       }
 
+      if (!reservation.etudiant) {
+        console.log('Reservation does not have etudiant');
+        throw new Error(`Reservation ${idReservation} does not have etudiant`);
+      }
+
+      if (!reservation.chambre) {
+        console.log('Reservation does not have chambre');
+        throw new Error(`Reservation ${idReservation} does not have chambre`);
+      }
+
       // check if reservation.etudiant.id alreadt have a validated reservation
       const etudiantReservations = await ReservationModel.find({
         'etudiant.id': reservation.etudiant.id,
@@ -128,6 +138,46 @@ module.exports = class ReservationService {
       console.log('🚀 ~ ReservationService ~ validerReservation ~ error:', error);
       throw error;
     }
+  }
+
+  static async cancelReservation(reservationId) {
+    console.log('cancelReservation', reservationId);
+    // check if reservationId exist
+    const reservation = await ReservationModel.findOne({ id: reservationId });
+    console.log('reservation', reservation);
+    if (!reservation) {
+      console.log('Reservation not found');
+      throw new Error(`Reservation ${reservationId} not found`);
+    }
+    // check if reservation is already canceled
+    if (!reservation.estValide) {
+      console.log('Reservation already invalid');
+      throw new Error(`Reservation ${reservationId} already invalid`);
+    }
+
+    if (!reservation.etudiant) {
+      console.log('Reservation already invalid');
+      throw new Error(`Reservation does not have etudiant`);
+    }
+
+    if (!reservation.chambre) {
+      console.log('Reservation already invalid');
+      throw new Error(`Reservation does not have chambre`);
+    }
+    // desaffect chambre and etudiant
+    const result = await ReservationModel.findOneAndUpdate(
+      { id: reservationId },
+      {
+        $set: {
+          estValide: false,
+          etudiant: null,
+          chambre: null,
+        },
+      },
+      { new: true }
+    );
+    console.log('result', result);
+    return result;
   }
 
   static #generateId(idChambre, idEtudiant) {
