@@ -72,6 +72,10 @@ services:
       - "Foyer"
       - "Universite"
       - "keycloak"
+      - "Reservation"
+      - "Bloc"
+      - "Chambre"
+      - "Reclamation"
   Universite:
     container_name: Universite
     build: .\universite-ms

@@ -22,9 +22,7 @@ module.exports = class ReservationController {
       const { idChambre, idEtudiant } = req.params;
       if (!idChambre) throw new Error('idChambre is required');
       if (!idEtudiant) throw new Error('idEtudiant is required');
-      const bearerToken = req.headers.authorization.split(' ')[1];
-      if (!bearerToken) throw new Error('bearerToken is required');
-      const existsChambreUser = await ReservationService.checkChambreUserExistance(idChambre, idEtudiant, bearerToken);
+      const existsChambreUser = await ReservationService.checkChambreUserExistance(idChambre, idEtudiant);
       console.log(
         '🚀 ~ file: reservation.js:19 ~ ReservationController ~ createReservation ~ existsChambreUser:',
         existsChambreUser

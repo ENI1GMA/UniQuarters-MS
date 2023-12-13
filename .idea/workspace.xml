@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chambre-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chambre-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eurekaDiscov/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaDiscov/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reclamation-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/reclamation-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlocMS/src/main/java/com/example/musicmservice/Controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlocMS/src/main/java/com/example/musicmservice/Controller/BlocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/enigma/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/enigma/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/controllers/ReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reclamation-ms/src/main/java/tn/enigma/reclamationms/controllers/ReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/universite-ms/src/main/java/com/enigma/controller/UniversiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/universite-ms/src/main/java/com/enigma/controller/UniversiteController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,8 +74,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChambreMsApplication">
-    <configuration name="BlocServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.EnigmaGatewayApp">
+    <configuration name="BlocServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="BlocMS" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.musicmservice.BlocServiceApplication" />
       <method v="2">
@@ -172,10 +171,7 @@
       <workItem from="1702416166838" duration="1080000" />
       <workItem from="1702418380777" duration="9435000" />
       <workItem from="1702466461137" duration="2458000" />
-      <workItem from="1702482973910" duration="1217000" />
-      <workItem from="1702484463878" duration="476000" />
-      <workItem from="1702484948683" duration="261000" />
-      <workItem from="1702486035984" duration="3360000" />
+      <workItem from="1702485587518" duration="5247000" />
     </task>
     <servers />
   </component>
