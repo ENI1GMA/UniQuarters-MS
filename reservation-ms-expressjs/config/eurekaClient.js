@@ -5,9 +5,9 @@ const Eureka = require('eureka-js-client').Eureka;
 const eurekaConfig = {
   instance: {
     app: 'RESERVATION-SERVICE-EXPRESSJS', // Replace with your service name
-    hostName: process.env.EUREKA_CLIENT_HOST,
+    hostName: 'reservationhost',
     ipAddr: process.env.EUREKA_IP_ADDRESS, // for check
-    statusPageUrl: `http://${process.env.EUREKA_CLIENT_HOST}:${process.env.PORT}/info`,
+    statusPageUrl: `http://${process.env.APP_HOST}:${process.env.PORT}/info`,
     port: {
       $: process.env.PORT,
       '@enabled': 'true',
