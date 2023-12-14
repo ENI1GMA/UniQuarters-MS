@@ -14,6 +14,13 @@ services:
     image: "eureka"
     environment:
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+  Frontend:
+    container_name: Frontend
+    build: .\UniQuarters-Angular
+    ports:
+      - "4200:80"
+    image: "frontend"
+    restart: always
   Reservation:
     container_name: Reservation
     build: .\reservation-ms-expressjs
