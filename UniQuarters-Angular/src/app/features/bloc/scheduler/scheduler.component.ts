@@ -24,7 +24,7 @@ export class SchedulerComponent {
     if (!location) {
       // Load all appointments
       this.store = new CustomStore({
-        key: 'idTravaux ',
+        key: 'idTravaux',
         load: (loadOptions) => {
 
           return new Promise((resolve, reject) => {
@@ -126,7 +126,7 @@ export class SchedulerComponent {
       this.ListTravaux = this.blocService.getAllBlocs2().subscribe(
           (data) => {
             this.ListTravaux = data;
-            console.log(this.ListTravaux );
+            console.log(" LIST TRAVAUX :::: " + JSON.stringify(this.ListTravaux, null, 2));
           },
           (error) => {
             console.log(error);
@@ -144,7 +144,7 @@ export class SchedulerComponent {
             dataService.getEventList().subscribe(
                 (audienceList) => {
                   resolve(audienceList);
-
+                  console.log("audienceList ::: " + JSON.stringify(audienceList, null, 2));
                 },
                 (error) => {
                   reject(error);
