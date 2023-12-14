@@ -20,7 +20,7 @@ public class SecurityConfig {
                         .configurationSource(request -> {
                             CorsConfiguration config = new CorsConfiguration();
                             config.setAllowedOrigins(Arrays.asList("*"));
-                            config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+                            config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH"));
                             config.setAllowedHeaders(Arrays.asList("*"));
                             return config;
                         })

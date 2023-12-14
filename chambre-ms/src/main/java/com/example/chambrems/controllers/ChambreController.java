@@ -30,7 +30,6 @@ public class ChambreController {
                     return;
                 }
                 String blocUrl = "http://BLOC-SERVICE/blocs/" + ch.getIdBloc();
-                String stringResponse = template.getForObject(blocUrl, String.class);
 
                 ApiResponse apiResponseUni = template.getForObject(blocUrl, ApiResponse.class);
 
@@ -39,8 +38,8 @@ public class ChambreController {
                 Bloc bloc = Bloc.builder()
                         .id(((Integer) data.get("id")).longValue())
                         .nom((String) data.get("nom"))
-                        .capacite((String) data.get("capacite")).
-                        foyerId(((Integer) data.get("foyerId")).longValue())
+                        .capacite((String) data.get("capacite"))
+                        //.foyerId(((Integer) data.get("foyerId")).longValue())
                         .build();
                 System.out.println("Bloc: " + bloc);
                 ch.setBloc(bloc);
@@ -64,13 +63,16 @@ public class ChambreController {
             } else {
                 if (foundChambre.getIdBloc() != null) {
                     String blocUrl = "http://BLOC-SERVICE/blocs/" + foundChambre.getIdBloc();
+                    System.out.println("blocUrl: " + blocUrl);
                     ApiResponse apiResponseUni = template.getForObject(blocUrl, ApiResponse.class);
+                    System.out.println("apiResponseUni: " + apiResponseUni);
                     HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("bloc");
+                    System.out.println("data: " + data);
                     Bloc bloc = Bloc.builder()
                             .id(((Integer) data.get("id")).longValue())
                             .nom((String) data.get("nom"))
-                            .capacite((String) data.get("capacite")).
-                            foyerId(((Integer) data.get("foyerId")).longValue())
+                            .capacite((String) data.get("capacite"))
+                            //.foyerId(((Integer) data.get("foyerId")).longValue())
                             .build();
                     foundChambre.setBloc(bloc);
                 }

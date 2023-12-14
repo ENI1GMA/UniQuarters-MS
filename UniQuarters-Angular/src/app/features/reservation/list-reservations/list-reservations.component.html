@@ -40,7 +40,7 @@
           <th>ID</th>
           <th>Année Universitaire</th>
           <th>Est Valide</th>
-          <th>Etudiants</th>
+          <th>Etudiant</th>
           <th>Chambre</th>
           <th>Bloc</th>
           <th>Actions</th>
@@ -53,40 +53,18 @@
               reservation?.id
             }}</a>
           </td>
-          <td>{{ reservation.anneeUniversitaire.slice(0, 4) }}</td>
+          <td>{{ reservation.anneeUniversitaire }}</td>
           <td>{{ reservation.estValide ? "Oui" : "Non" }}</td>
 
           <!-- Etudiant column -->
-          <td *ngIf="reservation.etudiants.length > 0" class="etudiant-column">
-            <div *ngFor="let etudiant of reservation.etudiants">
-              <div
-                [pTooltip]="
-                  'id: ' +
-                  etudiant.id +
-                  ', Cin: ' +
-                  etudiant.cin +
-                  ', Ecole: ' +
-                  etudiant.ecole +
-                  ', Date Naissance: ' +
-                  etudiant.dateNaissance
-                "
-              >
-                {{ etudiant.nom }} {{ etudiant.prenom }}
-              </div>
-            </div>
-          </td>
-          <td *ngIf="reservation.etudiants.length === 0">Aucun étudiant</td>
+          <td>{{ reservation?.etudiant?.id }}</td>
+          <td *ngIf="reservation?.etudiant === 0">Aucun étudiant</td>
           <td>
             <div
               *ngIf="reservation?.chambre"
-              [pTooltip]="
-                'id: ' +
-                reservation.chambre.id +
-                ', Type: ' +
-                reservation.chambre.type
-              "
+              [pTooltip]="'Type: ' + reservation.chambre.type"
             >
-              {{ reservation.chambre.numero }}
+              {{ reservation?.chambre?.numero }}
             </div>
             <div *ngIf="!reservation.chambre">Aucune chambre</div>
           </td>
@@ -95,14 +73,12 @@
               *ngIf="reservation.chambre?.bloc"
               [pTooltip]="
                 'id: ' +
-                reservation.chambre.bloc.id +
+                reservation.chambre?.bloc?.id +
                 ', Capacité: ' +
-                reservation.chambre.bloc.capacite +
-                ', foyer: ' +
-                reservation.chambre.bloc.foyer
+                reservation.chambre?.bloc?.capacite
               "
             >
-              {{ reservation.chambre.bloc.nom }}
+              {{ reservation.chambre?.bloc?.nom }}
             </div>
             <div *ngIf="!reservation.chambre?.bloc">Aucun bloc</div>
           </td>
@@ -117,8 +93,8 @@
               (click)="validate(reservation.id)"
               [disabled]="
                 reservation.estValide ||
-                reservation.etudiants.length === 0 ||
-                reservation.chambre === null
+                !reservation?.etudiant ||
+                !reservation?.chambre
               "
               class="p-button-success"
             ></button>
@@ -134,10 +110,8 @@
               pButton
               type="button"
               icon="pi pi-times"
-              (click)="cancel(reservation.etudiants[0].cin)"
-              [disabled]="
-                reservation.etudiants.length === 0 || !reservation.estValide
-              "
+              (click)="cancel(reservation.id)"
+              [disabled]="!reservation?.etudiant || !reservation.estValide"
               class="p-button-danger"
             ></button>
           </td>

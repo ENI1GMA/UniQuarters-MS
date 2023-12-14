@@ -41,15 +41,11 @@ export class UserService {
     return this.http.get(uniQuartersUri, { observe: 'response' }).pipe(retry(3), catchError(this.handleError))
   }
 
-  getUsersByRole(r: Role): Observable<HttpResponse<any>> {
-    return this.http.get(uniQuartersUri + "/role/" + r, { observe: 'response' }).pipe(retry(3), catchError(this.handleError))
-  }
-
-  getUser(id: number): Observable<HttpResponse<any>> {
+  getUser(id: string): Observable<HttpResponse<any>> {
     return this.http.get(uniQuartersUri + "/" + id, { observe: 'response' }).pipe(retry(3), catchError(this.handleError))
   }
 
-  deleteUser(id: number): Observable<HttpResponse<any>> {
+  deleteUser(id: string): Observable<HttpResponse<any>> {
     return this.http.delete(uniQuartersUri + "/" + id, { observe: 'response' })
       .pipe(
         retry(3), catchError(this.handleError),
