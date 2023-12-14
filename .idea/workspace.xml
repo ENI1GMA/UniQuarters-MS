@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="2e1a04af-4899-4fad-a7bb-9b86663a0fe5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/bloc/bloc-form/bloc-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/bloc/bloc-form/bloc-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/chambre-form/chambre-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/chambre-form/chambre-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/chambre-form/chambre-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/chambre-form/chambre-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/list-chambre/list-chambre.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/list-chambre/list-chambre.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/list-chambre/list-chambre.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/features/chambre/list-chambre/list-chambre.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/models/chambre.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/models/chambre.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/services/bloc.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/services/bloc.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniQuarters-Angular/src/app/services/chambre.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UniQuarters-Angular/src/app/services/chambre.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/controllers/ChambreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/controllers/ChambreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/entities/Chambre.java" beforeDir="false" afterPath="$PROJECT_DIR$/chambre-ms/src/main/java/com/example/chambrems/entities/Chambre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-ms-expressjs/routes/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-ms-expressjs/routes/reservation.js" afterDir="false" />
     </list>
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,18 +52,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "gestionChambre",
+    "git-widget-placeholder": "frontingBloc",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Lajmi Yasmine/Downloads/Studies & Homework/Projects/4TWIN3-ENGIMA-MS/BlocMS/src/main/java/com/example/musicmservice/BlocServiceApplication.java",
+    "last_opened_file_path": "C:/Users/khoui/projects/applications distribuées/projet",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4322132",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -81,7 +73,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EnigmaGatewayApp">
+  <component name="RunManager" selected="Spring Boot.EurekaDiscovApplication">
     <configuration name="BlocServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="BlocMS" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.musicmservice.BlocServiceApplication" />
@@ -177,7 +169,10 @@
       <workItem from="1702416166838" duration="1080000" />
       <workItem from="1702418380777" duration="9435000" />
       <workItem from="1702466461137" duration="2458000" />
-      <workItem from="1702485587518" duration="5247000" />
+      <workItem from="1702485587518" duration="6639000" />
+      <workItem from="1702509425113" duration="359000" />
+      <workItem from="1702509971873" duration="1280000" />
+
     </task>
     <servers />
   </component>

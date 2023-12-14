@@ -10,10 +10,11 @@ import { AuthGuard } from './helpers/auth.guard';
 import { UtilisateurModule } from './features/utilisateur/utilisateur.module';
 import { Role } from './models/role';
 // import { RoleGuard } from './helpers/role.guard';
-import { PasswordResetModule } from './features/password-reset/password-reset.module';
+// import { PasswordResetModule } from './features/password-reset/password-reset.module';
 import { SchedulerComponent } from './features/bloc/scheduler/scheduler.component';
 
 import { ListUniversiteFilteredComponent } from './features/universite/list-universite-filtered/list-universite-filtered.component';
+import { ReclamationModule } from './features/reclamation/reclamation.module';
 
 const routes: Routes = [
   {
@@ -24,10 +25,10 @@ const routes: Routes = [
     path: `${RoutePaths.REGISTER}`,
     component: RegisterComponent,
   },
-  {
-    path: `${RoutePaths.PASSWORD}`,
-    loadChildren: () => PasswordResetModule,
-  },
+  // {
+  //   path: `${RoutePaths.PASSWORD}`,
+  //   loadChildren: () => PasswordResetModule,
+  // },
   {
     path: `${RoutePaths.GESTION}`,
     component: LayoutComponent,
@@ -46,6 +47,10 @@ const routes: Routes = [
         loadChildren: () => UtilisateurModule,
       },
       {
+        path: `${RoutePaths.RECLAMATION}`,
+        loadChildren: () => ReclamationModule,
+      },
+      {
         path: `${RoutePaths.UNIVERSITE}`,
         loadChildren: () =>
           import('./features/universite/universite.module').then(
@@ -55,9 +60,7 @@ const routes: Routes = [
       {
         path: `${RoutePaths.FOYER}`,
         loadChildren: () =>
-          import('./features/foyers/foyers.module').then(
-            (m) => m.FoyersModule
-          ),
+          import('./features/foyers/foyers.module').then((m) => m.FoyersModule),
       },
       {
         path: `${RoutePaths.CHAMBRE}`,

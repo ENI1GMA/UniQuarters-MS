@@ -5,6 +5,9 @@ import {DialogService, DynamicDialogConfig, DynamicDialogRef} from "primeng/dyna
 import {ConfirmationService, MessageService} from "primeng/api";
 import {Bloc} from "../../../models/Bloc";
 import {NgForm} from "@angular/forms";
+import {Universite} from "../../../models/universite";
+import {UniversiteService} from "../../../services/universite.service";
+import {Foyer} from "../../../models/foyer";
 
 @Component({
   selector: 'app-bloc-form',
@@ -17,6 +20,7 @@ export class BlocFormComponent {
   selectedFoyerId!: number;
   constructor(
       private blocService: BlocService,
+      private universiteServuce : UniversiteService,
       private router: Router,
       private activatedRoute: ActivatedRoute,
       private readonly dialogService: DynamicDialogRef,
@@ -36,9 +40,9 @@ export class BlocFormComponent {
     this.id = this.config.data?.id;
 
     // Fetch the list of foyers when the component initializes
-    this.blocService.getAllFoyers().subscribe({
-      next: (data: any[]) => {
-        this.foyers = data;
+    this.universiteServuce.getAllFoyers().subscribe({
+      next: (data: any) => {
+        this.foyers = data.data.foyers;
         console.log("FOYERS LIST f lvl ::: "+JSON.stringify(this.foyers, null, 2));
       },
       error: (error) => {
@@ -51,7 +55,7 @@ export class BlocFormComponent {
     }
   }
   bl: Bloc = new Bloc();
- /* add(f: NgForm){
+  add(f: NgForm){
     console.log("form value  :::: "+f.value);
     // if the id is EXIST  then we are adding a new bloc ELSE we ADD the BLOC
     if (this.id !== undefined) {
@@ -59,7 +63,7 @@ export class BlocFormComponent {
         this.blocService.getAllBlocs().subscribe(
             (response: any) => {
               this.blocService.data = response.data.blocs;
-              console.log("UPDATE BLOC DONE " + response.data.getRawValue())
+              console.log("UPDATE BLOC DONE ")
             },
             (error) => {
               console.error('Error fetching data f lvl:', error);
@@ -94,9 +98,9 @@ export class BlocFormComponent {
       this.dialogService.close();
       f.reset();
     }
-  }*/
+  }
 
-  add(f: NgForm) {
+  /*add(f: NgForm) {
     const blocData = { ...this.bl, foyerId: this.selectedFoyerId };
     if (this.id !== undefined) {
       this.blocService.addBlocWithFoyer( blocData, this.selectedFoyerId).subscribe((data)=>{
@@ -142,5 +146,5 @@ export class BlocFormComponent {
         f.reset();
       });
     }
-  }
+  }*/
 }

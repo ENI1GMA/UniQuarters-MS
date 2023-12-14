@@ -21,5 +21,5 @@ public class Reclamation {
     private ReclamationStatusType status;
     private Date date;
     private boolean isDeleted;
-    private Long userId;
+    private String userId;
 }

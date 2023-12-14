@@ -11,7 +11,7 @@ export class BlocService {
   data: Bloc[] = [];
   /*apiUrl = 'http://localhost:8082/blocs';*/
   apiUrl = environment.uniQuartersUri + '/blocs';
-  apifoyer='http://localhost:8080/blocs'
+  apifoyer='http://localhost:8081/blocs'
   constructor(
       private _http: HttpClient
   ) { }
@@ -44,7 +44,7 @@ export class BlocService {
     }*/
     // Use a custom replacer function to remove underscores from keys
     //const  bloc = this.removeUnderscores(body);
-    return this._http.post(this.apiUrl, body);
+    return this._http.post("http://localhost:8081/blocs", body);
   }
   updateBloc(id:number,body: Bloc) {
     console.log("UPDATING BLOC service lvl ::: " + body);
@@ -62,17 +62,17 @@ export class BlocService {
 
    //pdf
   pdfExport():Observable<Blob>{
-    return this._http.get("http://localhost:8080/export/pdf", {responseType: 'blob'});
+    return this._http.get("http://localhost:8081/blocs/export/pdf", {responseType: 'blob'});
   }
   //Excel
   excelExport():Observable<Blob>{
-    return this._http.get("http://localhost:8080/export-to-excel", {responseType: 'blob'});
+    return this._http.get("http://localhost:8081/blocs/export-to-excel", {responseType: 'blob'});
   }
 
 
   getAllFoyers(): Observable<any[]> {
     console.log("FETCHING ALL FOYERS service lvl");
-    return this._http.get<any[]>("http://localhost:8080/blocs/datafoyer");
+    return this._http.get<any[]>("http://localhost:8081/blocs/datafoyer");
   }
   addBlocWithFoyer(bloc: Bloc, foyerId: number): Observable<any> {
     const url = `${this.apifoyer}/${foyerId}`;

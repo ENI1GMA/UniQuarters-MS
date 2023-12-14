@@ -8,14 +8,11 @@
           [(ngModel)]="selectedEtudiant"
           name="selectedEtudiant"
           [options]="etudiants"
-          optionLabel="nom"
+          optionLabel="username"
           placeholder="Select an etudiant"
           [required]="true"
           #etudiantDropdown="ngModel"
         >
-          <ng-template let-etudiant pTemplate="item">
-            {{ etudiant.nom }} {{ etudiant.prenom }}, {{ etudiant.cin }}
-          </ng-template>
         </p-dropdown>
         <div
           *ngIf="etudiantDropdown.touched && !selectedEtudiant"
@@ -39,9 +36,10 @@
         >
           <ng-template let-chambre pTemplate="item">
             {{ chambre.numero }}, {{ chambre.type }}, bloc:
-            <span *ngIf="chambre.bloc">{{ chambre.bloc.nom }} de capacité {{ chambre.bloc.capacite }} </span> 
-            <span *ngIf="!chambre.bloc">No blocs</span> 
-
+            <span *ngIf="chambre.bloc"
+              >{{ chambre.bloc.nom }} de capacité {{ chambre.bloc.capacite }}
+            </span>
+            <span *ngIf="!chambre.bloc">No blocs</span>
           </ng-template>
         </p-dropdown>
 

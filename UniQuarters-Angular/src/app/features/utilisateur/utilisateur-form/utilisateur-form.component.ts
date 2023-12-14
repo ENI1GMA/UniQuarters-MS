@@ -17,17 +17,17 @@ export class UtilisateurFormComponent implements OnInit {
     private authService: AuthService,
     private dialogConfig: DynamicDialogConfig,
     private dialogService: DynamicDialogRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.dialogConfig.data) {
       this.id = this.dialogConfig.data.id;
       this.userService.getUser(this.id).subscribe((response) => {
-        this.oldusername = response.body.data.user.username;
+        this.oldusername = response.body.username;
         this.userToSubmit = {
-          id: response.body.data.user.id,
-          username: response.body.data.user.username,
-          password: response.body.data.user.password,
+          id: response.body.id,
+          username: response.body.username,
+          password: response.body.password,
         };
       });
     }
@@ -35,38 +35,21 @@ export class UtilisateurFormComponent implements OnInit {
 
   userToSubmit = {} as User;
   oldusername!: string;
-  id!: number;
-  mailExists = false;
-  stateOptions = [
-    { label: 'Active', value: true },
-    { label: 'Desactivé', value: false },
-  ];
+  id!: string;
 
   submit(f: NgForm) {
     // Add user
     if (this.id === undefined) {
-      /*this.authService.usernameExists(this.userToSubmit.username).subscribe(response => {
-        if (response) {
-          this.mailExists = true;
-        } else {
-          this.mailExists = false;
-          this.userToSubmit.role = Role.Admin;
-          this.userService.addUser(this.userToSubmit).subscribe();
-          this.dialogService.close();
-        }
-      });*/
+      this.userService.addUser(this.userToSubmit).subscribe();
+      this.dialogService.close();
     }
     // Update user
     else {
-      /*this.authService.usernameExists(this.userToSubmit.username).subscribe(response => {
-        if (response && response != this.oldusername) {
-          this.mailExists = true;
-        } else {
-          this.mailExists = false;
-          this.userService.updateUser(this.userToSubmit).subscribe();
-          this.dialogService.close();
-        }
-      });*/
+
+      this.userService.updateUser(this.userToSubmit).subscribe();
+      this.dialogService.close();
     }
   }
+
+
 }
