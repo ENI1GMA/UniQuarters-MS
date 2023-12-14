@@ -11,19 +11,32 @@
       [showCurrentPageReport]="true" [filterDelay]="0">
       <ng-template pTemplate="header">
         <tr class="bg-white">
+          
+          <th>Évaluation</th>
           <th>Numéro Chambre</th>
           <th>Nom Bloc</th>
           <th>Facilities</th>
           <th>Description</th>
           <th>Type de Chambre</th>
-          <th>Disponible</th>
           <th>Actions</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-data>
         <tr>
+          <td >
+            <div class="star-container">
+            <div *ngFor="let i of [1, 2, 3, 4, 5]">
+              <ng-container *ngIf="getFilledStars(data.review) >= i">
+                <i class="pi pi-star-fill"></i>
+              </ng-container>
+              <ng-container *ngIf="getFilledStars(data.review) < i">
+                <i class="pi pi-star"></i>
+              </ng-container>
+            </div>
+          </div>
+          </td>
           <td>{{data.numero}}</td>
-          <td>{{data.bloc.nom}}</td>
+          <td>{{data.bloc?.nom}}</td>
 
           <td>
 
@@ -41,7 +54,7 @@
               [style]="{'background-color': data.petFriendly ? '#33cc99' : 'transparent', 'color': data.petFriendly ? '#fff' : '#000'}"></p-chip>
             <p-chip *ngIf="data.privateBathroom" [label]="data.privateBathroom ? 'Salle de bains privée' : ''"
               [style]="{'background-color': data.privateBathroom ? '#33cc99' : 'transparent', 'color': data.privateBathroom ? '#fff' : '#000'}"></p-chip>
-  <!--        <td>
+            <!--        <td>
 
             <p-chip *ngIf="data.workspace" [label]="data.workspace ? 'Espace de travail' : ''" [style]="{'background-color': data.workspace ? '#33cc99' : 'transparent'}"></p-chip>
             <p-chip *ngIf="data.balcony" [label]="data.balcony ? 'Balcon' : ''" [style]="{'background-color': data.balcony ? '#33cc99' : 'transparent', 'color': data.balcony ? '#fff' : '#000'}"></p-chip>
@@ -55,7 +68,8 @@
           </td>
           <td>{{data.description}}</td>
           <td>{{data.type}}</td>
-          <td>{{data.available ? 'Oui' : 'Non'}}</td>
+          <!-- Assuming review is a number between 0 and 5 -->
+   
 
 
           <td class="action">
@@ -75,4 +89,3 @@
     <p-toast></p-toast>
   </div>
 </div>
-

@@ -47,6 +47,9 @@ public class ChambreController {
             });
             apiResponse.setResponse(HttpStatus.OK, "Chambres retrieved successfully.");
             apiResponse.addData("chambres", chambres);
+            chambres.forEach(chambre -> {
+                chambre.calculateReview();
+            });
         } catch (Exception e) {
             apiResponse.setResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
@@ -78,6 +81,7 @@ public class ChambreController {
                 }
                 apiResponse.setResponse(HttpStatus.OK, "Chambre retrieved successfully.");
                 apiResponse.addData("chambre", foundChambre);
+                foundChambre.calculateReview();
             }
         } catch (Exception e) {
             apiResponse.setResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
@@ -117,6 +121,14 @@ public class ChambreController {
             ch.setDescription(chambre.getDescription());
             ch.setCapacity(chambre.getCapacity());
             ch.setIdBloc(chambre.getIdBloc());
+            ch.setWifi(chambre.isWifi());
+            ch.setAirConditioning(chambre.isAirConditioning());
+            ch.setPrivateBathroom(chambre.isPrivateBathroom());
+            ch.setBalcony(chambre.isBalcony());
+            ch.setWorkspace(chambre.isWorkspace());
+            ch.setKitchenette(chambre.isKitchenette());
+            ch.setPetFriendly(chambre.isPetFriendly());
+            ch.calculateReview();
 
            /* Long idBloc = chambre.getIdBloc();
             if (idBloc != null) {

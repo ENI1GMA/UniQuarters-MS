@@ -9,8 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="BlocMS" />
         <module name="reclamation-service" />
-        <module name="enigma-gateway" />
         <module name="chambre-ms" />
+        <module name="enigma-gateway" />
         <module name="eurekaDiscov" />
         <module name="universite-service" />
         <module name="foyer-service" />

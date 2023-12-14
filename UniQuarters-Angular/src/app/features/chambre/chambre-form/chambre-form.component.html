@@ -8,7 +8,8 @@
       <div class="col-12  px-4 border-rigth ">
         <div class="grid">
 
-          <div class="col-12" *ngIf="chambreService.AddOrEditChambreForm.value.id">
+ 
+          <div class="col-6" >
             <span class="label mt-2 required">Numéro de Chambre </span>
             <input id="numero" formControlName="numero" type="number" class="inputtext-sm full-width mt-2"
               placeholder="Saisir le numéro de chambre" pInputText />
@@ -19,29 +20,14 @@
                 <div class="invalid-feedback mt-2">{{ 'Numero de Chambre must contain at least 3 digits and no special characters' }}</div>
               </div>
           </div>
-          <div class="col-6" *ngIf="!chambreService.AddOrEditChambreForm.value.id">
-            <span class="label mt-2 required">Numéro de Chambre </span>
-            <input id="numero" formControlName="numero" type="number" class="inputtext-sm full-width mt-2"
-              placeholder="Saisir le numéro de chambre" pInputText />
-              <div *ngIf="chambreService.AddOrEditChambreForm.get('numero')?.hasError('required') && (chambreService.AddOrEditChambreForm.get('numero')?.dirty || chambreService.AddOrEditChambreForm.get('numero')?.touched)">
-                <div class="invalid-feedback mt-2">{{ 'Numero de Chambre is required' }}</div>
-              </div>
-              <div *ngIf="chambreService.AddOrEditChambreForm.get('numero')?.hasError('pattern') && (chambreService.AddOrEditChambreForm.get('numero')?.dirty || chambreService.AddOrEditChambreForm.get('numero')?.touched)">
-                <div class="invalid-feedback mt-2">{{ 'Numero de Chambre must contain at least 3 digits and no special characters' }}</div>
-              </div>
-          </div>
-          <div class="col-6 " [formGroup]="chambreService.blocForm"
-            *ngIf="!chambreService.AddOrEditChambreForm.value.id">
+          <div class="col-6 " >
             <span class="label required">Bloc </span>
-            <ng-select [items]="blocService.data" bindLabel="nom" bindValue="nom" formControlName="selectedBloc"
+            <ng-select [items]="blocService.data" bindLabel="nom" bindValue="id" formControlName="idBloc"
               class="inputtext-sm full-width mt-2">
               <ng-template let-item="item" pInputText>
                 {{ item.nom }}
               </ng-template>
             </ng-select>
-            <div *ngIf="chambreService.blocForm.get('selectedBloc')?.hasError('required') && (chambreService.blocForm.get('selectedBloc')?.dirty || chambreService.blocForm.get('selectedBloc')?.touched)" class="invalid-feedback mt-2">
-              {{ 'Bloc is required' }}
-            </div>
           </div>
           <div class="col-12 ">
             <span class="label required">Description </span>
@@ -175,12 +161,12 @@
           <div class="col-12">
             <div class=" flex button-wrap gap-3 mt-2">
               <button *ngIf="!chambreService.AddOrEditChambreForm.value.id" class="primary-button mt-3 col-12"
-                [disabled]="loading || !chambreService.AddOrEditChambreForm.valid || !chambreService.blocForm.value.selectedBloc"
+                [disabled]="loading || !chambreService.AddOrEditChambreForm.valid"
                 (click)="AddChambre()">
                 Enregistrer
               </button>
               <button *ngIf="chambreService.AddOrEditChambreForm.value.id " class="primary-button col-12"
-                [disabled]="loading && !chambreService.blocForm.value.selectedBloc" (click)="UpdateChambre()">
+                [disabled]="loading" (click)="UpdateChambre()">
                 Enregistrer
               </button>
             </div>

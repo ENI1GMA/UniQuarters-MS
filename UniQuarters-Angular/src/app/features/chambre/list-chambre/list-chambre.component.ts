@@ -75,7 +75,9 @@ export class ListChambreComponent implements OnInit {
       }
     });
   }
-
+  getFilledStars(review: number): number {
+    return Math.ceil(review);
+  }
   populateForm(d: any) {
     this.chambreService.AddOrEditChambreForm.reset({
       id: d.id,
@@ -90,7 +92,8 @@ export class ListChambreComponent implements OnInit {
       workspace: d.workspace,
       kitchenette: d.kitchenette ,
       petFriendly: d.petFriendly ,
-      travaux: d.travaux
+      travaux: d.travaux,
+      idBloc:d.bloc.id
     });
   }
   

@@ -27,6 +27,7 @@ export class ChambreService {
         kitchenette: [false],
         petFriendly: [false],
         travaux: [false],
+        idBloc: ['']
     });
     blocForm = this.fb.group({
         selectedBloc: ['', Validators.required],
