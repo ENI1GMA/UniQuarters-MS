@@ -21,10 +21,10 @@ const routes: Routes = [
     path: `${RoutePaths.LOGIN}`,
     component: LoginComponent,
   },
-  {
-    path: `${RoutePaths.REGISTER}`,
-    component: RegisterComponent,
-  },
+  // {
+  //   path: `${RoutePaths.REGISTER}`,
+  //   component: RegisterComponent,
+  // },
   // {
   //   path: `${RoutePaths.PASSWORD}`,
   //   loadChildren: () => PasswordResetModule,
@@ -110,7 +110,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      useHash: true,
+    }),
   ],
   exports: [RouterModule],
 })
