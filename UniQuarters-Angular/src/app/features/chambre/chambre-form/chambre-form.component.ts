@@ -83,30 +83,17 @@ export class ChambreFormComponent implements OnInit {
         (response: any) => {
 
           this.addedChambre = response.body.data.chambre;
-          if (this.chambreService.blocForm.valid) {
-            const selectedBlocId: string = this.chambreService.blocForm.value.selectedBloc || '';
-            console.log(selectedBlocId)
-            this.chambreService.affecterChambreABloc(this.addedChambre.id, selectedBlocId).subscribe(
-              (affecterResponse) => {
-                console.log('Chambre affectée à un bloc avec succès', affecterResponse);
-                this.loadChambres();
-                this.messageService.add({
-                  severity: 'success',
-                  summary: 'Success',
-                  detail: 'Chambre ajoutée et affectée à un bloc avec succès',
-                  life: 5000,
-                });
-                this.ref.close();
-                this.chambreService.AddOrEditChambreForm.reset();
-                this.submitted = false;
-                this.loading = false;
-              },
-              (affecterError) => {
-                console.error('Erreur lors de l\'affectation de la chambre à un bloc', affecterError);
-                this.loading = false;
-              }
-            );
-          }
+          this.loadChambres();
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Chambre ajoutée',
+            life: 5000,
+          });
+          this.ref.close();
+          this.chambreService.AddOrEditChambreForm.reset();
+          this.submitted = false;
+          this.loading = false;
 
    
         },
@@ -137,22 +124,13 @@ export class ChambreFormComponent implements OnInit {
 
     if (this.chambreService.AddOrEditChambreForm.valid) {
       this.loading = true;
-      this.chambreService.AddOrEditChambreForm.get('type')?.valueChanges.subscribe((selectedType) => {
-        const capacityControl = this.chambreService.AddOrEditChambreForm.get('capacity');
-        switch (selectedType) {
-          case 'SIMPLE':
-            capacityControl?.setValue(1);
-            break;
-          case 'DOUBLE':
-            capacityControl?.setValue(2);
-            break;
-          case 'TRIPLE':
-            capacityControl?.setValue(3);
-            break;
-          default:
-            break;
-        }
-      });
+      if (this.chambreService.AddOrEditChambreForm.value.type === 'SIMPLE') {
+        this.chambreService.AddOrEditChambreForm.value.capacity=1;
+      } else if (this.chambreService.AddOrEditChambreForm.value.type === 'DOUBLE') {
+        this.chambreService.AddOrEditChambreForm.value.capacity=2;
+      } else if (this.chambreService.AddOrEditChambreForm.value.type === 'TRIPLE') {
+        this.chambreService.AddOrEditChambreForm.value.capacity=3;
+      }
       console.log(this.chambreService.AddOrEditChambreForm.value)
       const updatedChambre = this.chambreService.AddOrEditChambreForm.value;
       if (updatedChambre.id !== undefined && updatedChambre.id !== null) {

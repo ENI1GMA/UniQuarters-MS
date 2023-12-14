@@ -10,4 +10,11 @@
 
 .chambre-type img{
     width: 8%;
-}
+}.star-container {
+    display: flex; /* Use flexbox to display stars horizontally */
+    .pi {
+        display: inline-block; 
+        color:$secondary-color;
+      }
+  }
+  

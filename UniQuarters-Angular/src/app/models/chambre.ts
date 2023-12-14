@@ -1,14 +1,9 @@
-import { Bloc } from "./Bloc";
-import { Reservation } from "./reservation";
-
 export interface Chambre {
   id: number;
   numero: number | null; 
   capacity: number;
   description: string;
   type: string;
-  bloc: Bloc | null; 
-  reservations: Reservation[];
   review: number;
   wifi: boolean;
   airConditioning: boolean;
@@ -20,4 +15,5 @@ export interface Chambre {
   travaux: boolean;
   available: boolean;
   picture:string;
+  idBloc:number|null; 
 }

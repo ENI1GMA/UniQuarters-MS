@@ -30,7 +30,6 @@ public class ChambreController {
                     return;
                 }
                 String blocUrl = "http://BLOC-SERVICE/blocs/" + ch.getIdBloc();
-                String stringResponse = template.getForObject(blocUrl, String.class);
 
                 ApiResponse apiResponseUni = template.getForObject(blocUrl, ApiResponse.class);
 
@@ -39,8 +38,8 @@ public class ChambreController {
                 Bloc bloc = Bloc.builder()
                         .id(((Integer) data.get("id")).longValue())
                         .nom((String) data.get("nom"))
-                        .capacite((String) data.get("capacite")).
-                        foyerId(((Integer) data.get("foyerId")).longValue())
+                        .capacite((String) data.get("capacite"))
+                        //.foyerId(((Integer) data.get("foyerId")).longValue())
                         .build();
                 System.out.println("Bloc: " + bloc);
                 ch.setBloc(bloc);
@@ -48,6 +47,9 @@ public class ChambreController {
             });
             apiResponse.setResponse(HttpStatus.OK, "Chambres retrieved successfully.");
             apiResponse.addData("chambres", chambres);
+            chambres.forEach(chambre -> {
+                chambre.calculateReview();
+            });
         } catch (Exception e) {
             apiResponse.setResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
@@ -64,18 +66,22 @@ public class ChambreController {
             } else {
                 if (foundChambre.getIdBloc() != null) {
                     String blocUrl = "http://BLOC-SERVICE/blocs/" + foundChambre.getIdBloc();
+                    System.out.println("blocUrl: " + blocUrl);
                     ApiResponse apiResponseUni = template.getForObject(blocUrl, ApiResponse.class);
+                    System.out.println("apiResponseUni: " + apiResponseUni);
                     HashMap<String, Object> data = (HashMap<String, Object>) apiResponseUni.getData().get("bloc");
+                    System.out.println("data: " + data);
                     Bloc bloc = Bloc.builder()
                             .id(((Integer) data.get("id")).longValue())
                             .nom((String) data.get("nom"))
-                            .capacite((String) data.get("capacite")).
-                            foyerId(((Integer) data.get("foyerId")).longValue())
+                            .capacite((String) data.get("capacite"))
+                            //.foyerId(((Integer) data.get("foyerId")).longValue())
                             .build();
                     foundChambre.setBloc(bloc);
                 }
                 apiResponse.setResponse(HttpStatus.OK, "Chambre retrieved successfully.");
                 apiResponse.addData("chambre", foundChambre);
+                foundChambre.calculateReview();
             }
         } catch (Exception e) {
             apiResponse.setResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
@@ -115,6 +121,14 @@ public class ChambreController {
             ch.setDescription(chambre.getDescription());
             ch.setCapacity(chambre.getCapacity());
             ch.setIdBloc(chambre.getIdBloc());
+            ch.setWifi(chambre.isWifi());
+            ch.setAirConditioning(chambre.isAirConditioning());
+            ch.setPrivateBathroom(chambre.isPrivateBathroom());
+            ch.setBalcony(chambre.isBalcony());
+            ch.setWorkspace(chambre.isWorkspace());
+            ch.setKitchenette(chambre.isKitchenette());
+            ch.setPetFriendly(chambre.isPetFriendly());
+            ch.calculateReview();
 
            /* Long idBloc = chambre.getIdBloc();
             if (idBloc != null) {
