@@ -26,16 +26,16 @@ export class NavigationComponent {
 }
 
 export const navbarData = [
-  {
-    icon: 'pi pi-chart-bar',
-    label: 'Dashboard',
-    routeLink: `/${RoutePaths.GESTION}/${RoutePaths.DASHBOARD}`,
-  },
-  {
-    icon: 'pi pi-user',
-    label: 'Utilisateurs',
-    routeLink: `/${RoutePaths.GESTION}/${RoutePaths.USER}`,
-  },
+  // {
+  //   icon: 'pi pi-chart-bar',
+  //   label: 'Dashboard',
+  //   routeLink: `/${RoutePaths.GESTION}/${RoutePaths.DASHBOARD}`,
+  // },
+  // {
+  //   icon: 'pi pi-user',
+  //   label: 'Utilisateurs',
+  //   routeLink: `/${RoutePaths.GESTION}/${RoutePaths.USER}`,
+  // },
   {
     icon: 'pi pi-file',
     label: 'Reclamations',
